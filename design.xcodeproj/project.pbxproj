@@ -14,6 +14,10 @@
 		EA45D47921922F4E0050FDC3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA45D47721922F4E0050FDC3 /* LaunchScreen.storyboard */; };
 		EA45D48421922F4E0050FDC3 /* designTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA45D48321922F4E0050FDC3 /* designTests.swift */; };
 		EA45D48F21922F4E0050FDC3 /* designUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA45D48E21922F4E0050FDC3 /* designUITests.swift */; };
+		EA45D49D219238270050FDC3 /* cell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA45D49C219238270050FDC3 /* cell.xib */; };
+		EA45D49F21923C830050FDC3 /* Second.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA45D49E21923C830050FDC3 /* Second.swift */; };
+		EA45D4A121923E5B0050FDC3 /* cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA45D4A021923E5B0050FDC3 /* cell.swift */; };
+		EAA59AA9219B79FC0053A6F8 /* AlarmStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA59AA8219B79FC0053A6F8 /* AlarmStruct.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +51,10 @@
 		EA45D48A21922F4E0050FDC3 /* designUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = designUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA45D48E21922F4E0050FDC3 /* designUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = designUITests.swift; sourceTree = "<group>"; };
 		EA45D49021922F4E0050FDC3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EA45D49C219238270050FDC3 /* cell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = cell.xib; sourceTree = "<group>"; };
+		EA45D49E21923C830050FDC3 /* Second.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Second.swift; sourceTree = "<group>"; };
+		EA45D4A021923E5B0050FDC3 /* cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cell.swift; sourceTree = "<group>"; };
+		EAA59AA8219B79FC0053A6F8 /* AlarmStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmStruct.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +111,10 @@
 				EA45D47521922F4E0050FDC3 /* Assets.xcassets */,
 				EA45D47721922F4E0050FDC3 /* LaunchScreen.storyboard */,
 				EA45D47A21922F4E0050FDC3 /* Info.plist */,
+				EA45D49C219238270050FDC3 /* cell.xib */,
+				EA45D49E21923C830050FDC3 /* Second.swift */,
+				EA45D4A021923E5B0050FDC3 /* cell.swift */,
+				EAA59AA8219B79FC0053A6F8 /* AlarmStruct.swift */,
 			);
 			path = design;
 			sourceTree = "<group>";
@@ -230,6 +242,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EA45D47921922F4E0050FDC3 /* LaunchScreen.storyboard in Resources */,
+				EA45D49D219238270050FDC3 /* cell.xib in Resources */,
 				EA45D47621922F4E0050FDC3 /* Assets.xcassets in Resources */,
 				EA45D47421922F4C0050FDC3 /* Main.storyboard in Resources */,
 			);
@@ -256,8 +269,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EAA59AA9219B79FC0053A6F8 /* AlarmStruct.swift in Sources */,
 				EA45D47121922F4C0050FDC3 /* ViewController.swift in Sources */,
+				EA45D4A121923E5B0050FDC3 /* cell.swift in Sources */,
 				EA45D46F21922F4C0050FDC3 /* AppDelegate.swift in Sources */,
+				EA45D49F21923C830050FDC3 /* Second.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

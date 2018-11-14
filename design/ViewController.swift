@@ -8,13 +8,33 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource
+{
+    var alarms = [Alarm]()
+    
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return alarms.count
     }
-
-
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "alarmcell", for: indexPath) as! Cell
+        cell.arrivetime.text = String(alarms[indexPath.row].arrivingtimehours)
+        cell.arriveplace.text = alarms[indexPath.row].arrivingplace
+        cell.timeonfees.text = String(alarms[indexPath.row].timeforfees)
+        return cell
+    }
+    
+    
+    @IBOutlet weak var tableView: UITableView!
+    
+    let cellIdentifier = "Cell"
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()                
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.register(UINib.init(nibName: "Cell", bundle: nil), forCellReuseIdentifier: "alarmcell")
+    }
+    
 }
-
