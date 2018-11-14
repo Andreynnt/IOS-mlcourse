@@ -13,6 +13,16 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var alarms = [Alarm]()
     
 
+    let list: [String: Any] = [
+        "arrivingplace": "Бауманка",
+        "arrivingtimehours": 13,
+        "arrivingtimemin": 40,
+        "timeforfees": 40,
+        "getuptimehours": 12,
+        "getuptimemin": 10,
+        "getupplace": "home"
+    ]
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return alarms.count
     }
@@ -25,16 +35,24 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         return cell
     }
     
+    func full(){
+       guard let alarm = Alarm(dict: list as NSDictionary) else { return }
+        alarms.append(alarm)
+
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 90
+    }
+    
     
     @IBOutlet weak var tableView: UITableView!
     
-    let cellIdentifier = "Cell"
-    
     override func viewDidLoad() {
-        super.viewDidLoad()                
+        super.viewDidLoad()
+        full()
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.register(UINib.init(nibName: "Cell", bundle: nil), forCellReuseIdentifier: "alarmcell")
+        tableView.register(UINib.init(nibName: "cell", bundle: nil), forCellReuseIdentifier: "alarmcell")
     }
     
 }

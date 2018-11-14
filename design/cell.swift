@@ -11,11 +11,9 @@ import UIKit
 class Cell: UITableViewCell {
     
     
-    @IBOutlet weak var arrivetime: UITextField!
-    
-    @IBOutlet weak var arriveplace: UITextField!
-    
-    @IBOutlet weak var timeonfees: UITextField!
+    @IBOutlet weak var arrivetime: UILabel!
+    @IBOutlet weak var arriveplace: UILabel!
+    @IBOutlet weak var timeonfees: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="XUn-tA-jEv">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -10,55 +10,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
-            <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="design" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="images" translatesAutoresizingMaskIntoConstraints="NO" id="aG1-V5-1rw">
-                                <rect key="frame" x="108" y="254" width="159" height="159"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="159" id="EEl-N1-zP0"/>
-                                    <constraint firstAttribute="width" constant="159" id="JvV-fG-3tq"/>
-                                </constraints>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yr6-QN-V0t">
-                                <rect key="frame" x="116" y="614.5" width="143" height="32.5"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="143" id="xtz-Re-KtJ"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="27"/>
-                                <color key="textColor" red="1" green="0.49595150117048048" blue="0.107855643401358" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lmQ-mm-b0v">
-                                <rect key="frame" x="6" y="26" width="363" height="218"/>
-                                <connections>
-                                    <segue destination="XUn-tA-jEv" kind="show" id="Jxt-6U-bM5"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" red="0.14195126273333827" green="0.14335672078020301" blue="0.14335672078020301" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="aG1-V5-1rw" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="2pC-Jc-W3Z"/>
-                            <constraint firstItem="lmQ-mm-b0v" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="6" id="6Ce-1k-bZm"/>
-                            <constraint firstItem="aG1-V5-1rw" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="COE-1G-EWg"/>
-                            <constraint firstItem="Yr6-QN-V0t" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="FKq-1q-JWm"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Yr6-QN-V0t" secondAttribute="bottom" constant="20" id="NKT-4C-tfx"/>
-                            <constraint firstItem="lmQ-mm-b0v" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="6" id="UHn-e7-qjz"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="lmQ-mm-b0v" secondAttribute="trailing" constant="6" id="Zfw-I3-WJl"/>
-                            <constraint firstItem="aG1-V5-1rw" firstAttribute="top" secondItem="lmQ-mm-b0v" secondAttribute="bottom" constant="10" id="hCY-S7-pYy"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="141.59999999999999" y="133.5832083958021"/>
-        </scene>
         <!--View Controller-->
         <scene sceneID="p7u-Av-ufx">
             <objects>
@@ -111,7 +62,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="SoG-05-Xy0"/>
                     <connections>
-                        <outlet property="tableView" destination="QTL-du-LQb" id="2bj-0h-oBo"/>
+                        <outlet property="tableView" destination="QTL-du-LQb" id="MWG-Ga-Lt6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sGU-dF-C0q" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -232,10 +183,7 @@
             <point key="canvasLocation" x="2655.1999999999998" y="128.18590704647679"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="images" width="216" height="215"/>
-    </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Jxt-6U-bM5"/>
+        <segue reference="Xgu-ok-rdR"/>
     </inferredMetricsTieBreakers>
 </document>
