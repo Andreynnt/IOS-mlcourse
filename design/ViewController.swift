@@ -32,6 +32,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         cell.arrivetime.text = String(alarms[indexPath.row].arrivingtimehours)
         cell.arriveplace.text = alarms[indexPath.row].arrivingplace
         cell.timeonfees.text = String(alarms[indexPath.row].timeforfees)
+        cell.arriveTimeMin.text = String(alarms[indexPath.row].arrivingtimemin)
         return cell
     }
     

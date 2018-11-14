@@ -15,6 +15,7 @@ class Cell: UITableViewCell {
     @IBOutlet weak var arriveplace: UILabel!
     @IBOutlet weak var timeonfees: UILabel!
     
+    @IBOutlet weak var arriveTimeMin: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
     }
