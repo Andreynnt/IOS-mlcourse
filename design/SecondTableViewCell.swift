@@ -1,15 +1,18 @@
 //
-//  Second.swift
+//  SecondTableViewCell.swift
 //  design
 //
-//  Created by Tonya on 07/11/2018.
+//  Created by Tonya on 18/11/2018.
 //  Copyright © 2018 Tonya. All rights reserved.
 //
 
 import UIKit
 
-class Second: UITableViewCell {
+class SecondTableViewCell: UITableViewCell {
 
+    
+    @IBOutlet weak var LabelForSecond: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
