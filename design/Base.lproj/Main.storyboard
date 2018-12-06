@@ -67,27 +67,43 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="iOO-nP-tvG">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kzV-OD-L3f">
+                                <rect key="frame" x="2" y="67" width="371" height="216"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="216" id="68H-c5-9Cq"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="dataSource" destination="Yna-FZ-4Xo" id="GY9-jz-OH9"/>
+                                    <outlet property="delegate" destination="Yna-FZ-4Xo" id="Hdy-3V-gZ5"/>
+                                </connections>
+                            </pickerView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="eUu-Qh-KXm">
+                                <rect key="frame" x="2" y="293" width="371" height="200"/>
                                 <color key="backgroundColor" red="0.14320272840000001" green="0.14320272840000001" blue="0.14320272840000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="2Gq-TM-UmO"/>
+                                </constraints>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" red="0.14320272840000001" green="0.14320272840000001" blue="0.14320272840000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="6Ss-3y-fzN" firstAttribute="trailing" secondItem="iOO-nP-tvG" secondAttribute="trailing" id="27b-QY-R35"/>
-                            <constraint firstItem="6Ss-3y-fzN" firstAttribute="bottom" secondItem="iOO-nP-tvG" secondAttribute="bottom" id="2ND-46-hoc"/>
-                            <constraint firstItem="iOO-nP-tvG" firstAttribute="leading" secondItem="6Ss-3y-fzN" secondAttribute="leading" id="RUK-ei-h3G"/>
-                            <constraint firstItem="iOO-nP-tvG" firstAttribute="top" secondItem="6Ss-3y-fzN" secondAttribute="top" id="aQq-XO-rpB"/>
+                            <constraint firstItem="eUu-Qh-KXm" firstAttribute="leading" secondItem="6Ss-3y-fzN" secondAttribute="leading" constant="2" id="9mv-Y8-3pr"/>
+                            <constraint firstItem="kzV-OD-L3f" firstAttribute="top" secondItem="6Ss-3y-fzN" secondAttribute="top" constant="3" id="ATg-Nh-dBe"/>
+                            <constraint firstItem="kzV-OD-L3f" firstAttribute="leading" secondItem="6Ss-3y-fzN" secondAttribute="leading" constant="2" id="GyY-OO-7g8"/>
+                            <constraint firstItem="6Ss-3y-fzN" firstAttribute="trailing" secondItem="eUu-Qh-KXm" secondAttribute="trailing" constant="2" id="TEK-kq-Tfx"/>
+                            <constraint firstItem="eUu-Qh-KXm" firstAttribute="top" secondItem="kzV-OD-L3f" secondAttribute="bottom" constant="10" id="b1o-y1-Eqj"/>
+                            <constraint firstItem="6Ss-3y-fzN" firstAttribute="trailing" secondItem="kzV-OD-L3f" secondAttribute="trailing" constant="2" id="k8X-8N-1St"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Ss-3y-fzN"/>
                     </view>
                     <connections>
-                        <outlet property="SecondTableView" destination="iOO-nP-tvG" id="VU0-Al-2w5"/>
+                        <outlet property="TableView" destination="eUu-Qh-KXm" id="3Fm-Up-ezh"/>
+                        <outlet property="hours" destination="kzV-OD-L3f" id="m1u-39-7MN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xfO-Q2-2gM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3508" y="147"/>
+            <point key="canvasLocation" x="3484" y="120"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Rwf-YU-TVM">

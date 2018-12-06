@@ -8,28 +8,56 @@
 
 import UIKit
 
-class SecondViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class SecondViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITableViewDelegate, UITableViewDataSource{
 
-    @IBOutlet weak var SecondTableView: UITableView!
+    
+    @IBOutlet weak var hours: UIPickerView!
     
     
+    @IBOutlet weak var TableView: UITableView!
+    
+    let hoursarr = Array(0...23)
+    let minutsarr = Array(0...59)
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 2
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        if component == 0{
+            return String(hoursarr[row]);
+        } else{
+            return String(minutsarr[row])
+        }
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        if component == 0{
+            return hoursarr.count
+        } else{
+            return minutsarr.count
+        }
+    }
     let listForSecond = [
-        "Установить место прибытия",
-        "Установить время прибытия",
         "Установить время на сборы",
-        "Установить место подъема",
-        "Поставить будильник!"
+        "Откуда поедете",
+        "Куда поедете",
+        "На чем поедете",
     ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        SecondTableView.dataSource = self
-        SecondTableView.delegate = self
-        SecondTableView.register(UINib.init(nibName: "SecondTableViewCell", bundle: nil), forCellReuseIdentifier: "secondCell")
+        TableView.dataSource = self
+        TableView.delegate = self
+        TableView.register(UINib.init(nibName: "SecondTableViewCell", bundle: nil), forCellReuseIdentifier: "secondCell")
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return listForSecond.count
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 50
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -37,15 +65,7 @@ class SecondViewController: UIViewController, UITableViewDelegate, UITableViewDa
         cell.LabelForSecond.text = String(listForSecond[indexPath.row])
         return cell
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+    
+    
 
 }
