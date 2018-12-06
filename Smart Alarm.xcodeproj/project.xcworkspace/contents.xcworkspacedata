@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:design.xcodeproj">
+      location = "self:/Users/andreynnt/Documents/park/ios/IOS-mlcourse/Smart Alarm.xcodeproj">
    </FileRef>
 </Workspace>

@@ -1,66 +1,19 @@
 //
-//  ViewController.swift
+//  Pushes.swift
 //  design
 //
-//  Created by Tonya on 06/11/2018.
+//  Created by Андрей Бабков on 06/12/2018.
 //  Copyright © 2018 Tonya. All rights reserved.
 //
 
-import UIKit
+import Foundation
 import UserNotifications
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource
-{
+class Pushes {
+    
     let songName = "s.caf"
     
-    var alarms = [Alarm]()
-    
-    let list: [String: Any] = [
-        "arrivingplace": "Бауманка",
-        "arrivingtimehours": 15,
-        "arrivingtimemin": 43   ,
-        "timeforfees": 1,
-        "getuptimehours": 12,
-        "getuptimemin": 10,
-        "getupplace": "home"
-    ]
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return alarms.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "alarmcell", for: indexPath) as! Cell
-        cell.arrivetime.text = String(alarms[indexPath.row].arrivingtimehours)
-        cell.arriveplace.text = alarms[indexPath.row].arrivingplace
-        cell.timeonfees.text = String(alarms[indexPath.row].timeforfees)
-        cell.arriveTimeMin.text = String(alarms[indexPath.row].arrivingtimemin)
-        return cell
-    }
-    
-    func full(){
-        guard let alarm = Alarm(dict: list as NSDictionary) else { return }
-        alarms.append(alarm)
-        
-    }
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 90
-    }
-    
-    
-    @IBOutlet weak var tableView: UITableView!
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        full()
-        tableView.dataSource = self
-        tableView.delegate = self
-        tableView.register(UINib.init(nibName: "cell", bundle: nil), forCellReuseIdentifier: "alarmcell")
-        testTime()
-    }
-    
     func testTime() {
-        
         //callback, который запустится после того, как придет ответ
         let callback = { (time: Int) -> Void in
             if time == -1 {
@@ -74,13 +27,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             let date = self.getDateForPush(seconds: parsedTime)
             self.firePush(at: date)
         }
-        
         let travelManager = TravelManager(callback: callback)
         let myAdress = "55.683494,37.528046"
         let secondAdress = "55.685939,37.532917"
         //время на сборы в минутах
         let timeForPacking = 2
-        
         //внутри этого метода выполнится коллбэк, объявленный ранее
         travelManager.getTravelTime(origin: myAdress, destination: secondAdress, mode: TravelModes.transit, additionalMinutes: timeForPacking)
     }
@@ -97,19 +48,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         return dateComponents
     }
     
-    //просто функция, которая вызовет пуш через минуту. Нам она не нужна
-    @IBAction func touchPushButton(_ sender: UIButton) {
-        let now = Date()
-        let calendar = Calendar.current
-        let hour = calendar.component(.hour, from: now)
-        let minutes = calendar.component(.minute, from: now)
-        //запускаем будильник через минуту
-        var date = DateComponents()
-        date.hour = hour
-        date.minute = minutes + 1
-        firePush(at: date)
-    }
-    
     //ставим пуш на нужное время
     func firePush(at date: DateComponents?) {
         guard let parsedDate = date else { return }
@@ -123,8 +61,4 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let request = UNNotificationRequest(identifier: "alarm", content: content, trigger: trigger)
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
     }
-
-    
-    
-    
 }

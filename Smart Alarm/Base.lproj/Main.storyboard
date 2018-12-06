@@ -13,7 +13,7 @@
         <!--Ваши будильники-->
         <scene sceneID="p7u-Av-ufx">
             <objects>
-                <viewController id="XUn-tA-jEv" customClass="ViewController" customModule="design" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="XUn-tA-jEv" customClass="AlarmsViewController" customModule="Smart_Alarm" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pz2-aB-d0C">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -57,12 +57,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sGU-dF-C0q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2716" y="129.98500749625188"/>
+            <point key="canvasLocation" x="2516" y="-93"/>
         </scene>
-        <!--Second View Controller-->
+        <!--Alarm Settings View Controller-->
         <scene sceneID="6ir-Q3-NC8">
             <objects>
-                <viewController id="Yna-FZ-4Xo" customClass="SecondViewController" customModule="design" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Yna-FZ-4Xo" customClass="AlarmSettingsViewController" customModule="Smart_Alarm" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ar0-p7-Iym">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -87,7 +87,52 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xfO-Q2-2gM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3508" y="147"/>
+            <point key="canvasLocation" x="3273" y="-93"/>
+        </scene>
+        <!--Map View Controller-->
+        <scene sceneID="z6c-Gk-uvA">
+            <objects>
+                <viewController id="Q7B-tL-oYK" customClass="MapViewController" customModule="Smart_Alarm" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="YAS-Tw-k99">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="wk9-f1-spR"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="p7F-89-tEO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3417" y="779"/>
+        </scene>
+        <!--Prepare Settings View Controller-->
+        <scene sceneID="df3-dY-nqQ">
+            <objects>
+                <viewController id="57h-R0-eaa" customClass="PrepareSettingsViewController" customModule="Smart_Alarm" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="aUX-WJ-WWk">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="t6B-x1-Qhk"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="S0K-ap-ugP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2654" y="779"/>
+        </scene>
+        <!--Type Of Tansport View Controller-->
+        <scene sceneID="dE0-ac-t2s">
+            <objects>
+                <viewController id="Xdf-Eo-rVN" customClass="TypeOfTansportViewController" customModule="Smart_Alarm" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="YEd-ZW-cca">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="t9d-CW-YDy"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tHE-tr-pz4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4137" y="779"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Rwf-YU-TVM">
@@ -114,7 +159,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Iio-6z-Z81" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1776.8" y="129.98500749625188"/>
+            <point key="canvasLocation" x="1777" y="-93"/>
         </scene>
     </scenes>
 </document>
