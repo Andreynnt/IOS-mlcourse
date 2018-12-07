@@ -9,12 +9,13 @@
 import UIKit
 import UserNotifications
 
+
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource
 {
     let songName = "s.caf"
     
     var alarms = [Alarm]()
-    
+
     let list: [String: Any] = [
         "arrivingplace": "Бауманка",
         "arrivingtimehours": 15,
@@ -57,10 +58,19 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         tableView.delegate = self
         tableView.register(UINib.init(nibName: "cell", bundle: nil), forCellReuseIdentifier: "alarmcell")
         testTime()
+        
     }
     
+    func saveData(list: Alarm)  {
+        self.alarms.append(list)
+        for i in alarms{
+            print(i)
+        }
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
     func testTime() {
-        
         //callback, который запустится после того, как придет ответ
         let callback = { (time: Int) -> Void in
             if time == -1 {

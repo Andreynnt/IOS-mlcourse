@@ -10,9 +10,31 @@ import UIKit
 
 class SecondViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITableViewDelegate, UITableViewDataSource{
 
+    var maiView = ViewController()
+    
+    var list2: [String: Any] = [
+        "arrivingplace": "Бауманка",
+        "arrivingtimehours": 15,
+        "arrivingtimemin": 43   ,
+        "timeforfees": 1,
+        "getuptimehours": 12,
+        "getuptimemin": 10,
+        "getupplace": "home"
+    ]
     
     @IBOutlet weak var hours: UIPickerView!
     
+    
+    @IBAction func save(_ sender: Any) {
+        guard let alarm = Alarm(dict: list2 as NSDictionary) else { return }
+        maiView.saveData(list: alarm)
+        
+        navigationController?.popViewController(animated: true)
+    }
+    @IBAction func DelButton(_ sender: Any) {
+        navigationController?.popViewController(animated: true)
+
+    }
     
     @IBOutlet weak var TableView: UITableView!
     
@@ -28,6 +50,26 @@ class SecondViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
             return String(hoursarr[row]);
         } else{
             return String(minutsarr[row])
+        }
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
+        if component == 0{
+            let titleData = String(hoursarr[row])
+            let myTitle = NSAttributedString(string: titleData, attributes: [NSAttributedString.Key.foregroundColor:UIColor.white])
+            return myTitle
+        } else {
+            let titleData = String(minutsarr[row])
+            let myTitle = NSAttributedString(string: titleData, attributes: [NSAttributedString.Key.foregroundColor:UIColor.white])
+            return myTitle
+        }
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        if component == 0{
+            self.list2["arrivingtimehours"] = hoursarr[row]
+        }else{
+            self.list2["arrivingtimemin"] = minutsarr[row]
         }
     }
     
