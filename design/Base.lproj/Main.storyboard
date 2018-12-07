@@ -33,7 +33,7 @@
                                     <color key="titleColor" red="1" green="0.49595150119999998" blue="0.10785564340000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="Yna-FZ-4Xo" kind="show" id="kWm-VW-ehN"/>
+                                    <segue destination="Yna-FZ-4Xo" kind="show" identifier="toSecond" id="kWm-VW-ehN"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -62,7 +62,7 @@
         <!--Second View Controller-->
         <scene sceneID="6ir-Q3-NC8">
             <objects>
-                <viewController id="Yna-FZ-4Xo" customClass="SecondViewController" customModule="design" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="newAlarm" id="Yna-FZ-4Xo" customClass="SecondViewController" customModule="design" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ar0-p7-Iym">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

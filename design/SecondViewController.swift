@@ -8,9 +8,13 @@
 
 import UIKit
 
-class SecondViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITableViewDelegate, UITableViewDataSource{
+protocol dataToFirst {
+    func SaveData(list: Alarm)
+}
 
-    var maiView = ViewController()
+class SecondViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITableViewDelegate, UITableViewDataSource{
+    
+    var DataDelegate: dataToFirst!
     
     var list2: [String: Any] = [
         "arrivingplace": "Бауманка",
@@ -27,13 +31,13 @@ class SecondViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
     
     @IBAction func save(_ sender: Any) {
         guard let alarm = Alarm(dict: list2 as NSDictionary) else { return }
-        maiView.saveData(list: alarm)
-        
+        DataDelegate.SaveData(list: alarm)
         navigationController?.popViewController(animated: true)
     }
+    
+    
     @IBAction func DelButton(_ sender: Any) {
         navigationController?.popViewController(animated: true)
-
     }
     
     @IBOutlet weak var TableView: UITableView!

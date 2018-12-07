@@ -12,6 +12,16 @@ import UserNotifications
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource
 {
+    
+    @IBAction func NewAlarm(_ sender: UIButton) {
+            performSegue(withIdentifier: "toSecond", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let SecondVC = segue.destination as! SecondViewController
+        SecondVC.DataDelegate = self
+    }
+    
     let songName = "s.caf"
     
     var alarms = [Alarm]()
@@ -61,15 +71,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
     }
     
-    func saveData(list: Alarm)  {
-        self.alarms.append(list)
-        for i in alarms{
-            print(i)
-        }
-        DispatchQueue.main.async {
-            self.tableView.reloadData()
-        }
-    }
     func testTime() {
         //callback, который запустится после того, как придет ответ
         let callback = { (time: Int) -> Void in
@@ -133,8 +134,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let request = UNNotificationRequest(identifier: "alarm", content: content, trigger: trigger)
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
     }
+    
+}
 
-    
-    
-    
+extension ViewController: dataToFirst{
+    func SaveData(list: Alarm)  {
+        alarms.append(list)
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
 }
