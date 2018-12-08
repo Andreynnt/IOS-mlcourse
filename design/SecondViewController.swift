@@ -112,6 +112,17 @@ class SecondViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row == 0{
+            performSegue(withIdentifier: "timeForFees", sender: self)
+        }
+    }
+    
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "timeForFees" {
+//            let _ = segue.destination as! FeesController
+//        }
+//    }
     
 
 }

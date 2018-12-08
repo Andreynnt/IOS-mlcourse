@@ -125,11 +125,68 @@
                     <connections>
                         <outlet property="TableView" destination="eUu-Qh-KXm" id="3Fm-Up-ezh"/>
                         <outlet property="hours" destination="kzV-OD-L3f" id="m1u-39-7MN"/>
+                        <segue destination="2rD-UC-V2K" kind="show" identifier="timeForFees" id="VKH-Fx-2WK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xfO-Q2-2gM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3484" y="120"/>
+            <point key="canvasLocation" x="3588" y="130"/>
+        </scene>
+        <!--Fees Controller-->
+        <scene sceneID="wzz-NU-Qui">
+            <objects>
+                <viewController id="2rD-UC-V2K" customClass="FeesController" customModule="design" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="HVg-UJ-1km">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Установите время на сборы:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GaH-TX-umr">
+                                <rect key="frame" x="2" y="214" width="371" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="9hz-ox-7Y3"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="0.49595150119999998" blue="0.10785564340000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="45Y-tZ-cQv">
+                                <rect key="frame" x="2" y="264" width="371" height="216"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="216" id="z3Y-A9-Mla"/>
+                                </constraints>
+                            </pickerView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4jt-MM-kGq">
+                                <rect key="frame" x="2" y="617" width="371" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="ftd-lo-RYR"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Сохранить время на сборы">
+                                    <color key="titleColor" red="1" green="0.49595150119999998" blue="0.10785564340000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.14320272840000001" green="0.14320272840000001" blue="0.14320272840000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="4Cw-pU-Krj" firstAttribute="bottom" secondItem="4jt-MM-kGq" secondAttribute="bottom" constant="20" id="5U6-Rh-ULx"/>
+                            <constraint firstItem="4Cw-pU-Krj" firstAttribute="trailing" secondItem="4jt-MM-kGq" secondAttribute="trailing" constant="2" id="MNP-k6-Mfk"/>
+                            <constraint firstItem="GaH-TX-umr" firstAttribute="leading" secondItem="4Cw-pU-Krj" secondAttribute="leading" constant="2" id="O5i-5K-bHn"/>
+                            <constraint firstItem="4jt-MM-kGq" firstAttribute="leading" secondItem="4Cw-pU-Krj" secondAttribute="leading" constant="2" id="Xa9-aF-C2P"/>
+                            <constraint firstItem="4Cw-pU-Krj" firstAttribute="trailing" secondItem="45Y-tZ-cQv" secondAttribute="trailing" constant="2" id="b5u-Ug-TY8"/>
+                            <constraint firstItem="45Y-tZ-cQv" firstAttribute="leading" secondItem="HVg-UJ-1km" secondAttribute="leading" constant="2" id="cfJ-nd-QGF"/>
+                            <constraint firstItem="4Cw-pU-Krj" firstAttribute="trailing" secondItem="GaH-TX-umr" secondAttribute="trailing" constant="2" id="chD-gR-hir"/>
+                            <constraint firstItem="45Y-tZ-cQv" firstAttribute="top" secondItem="GaH-TX-umr" secondAttribute="bottom" constant="20" id="lWh-KR-iCk"/>
+                            <constraint firstItem="GaH-TX-umr" firstAttribute="top" secondItem="4Cw-pU-Krj" secondAttribute="top" constant="150" id="o3P-tO-MkZ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="4Cw-pU-Krj"/>
+                    </view>
+                    <connections>
+                        <outlet property="FeesTime" destination="45Y-tZ-cQv" id="tCu-UI-bac"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YEI-BV-BKm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4345" y="122"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Rwf-YU-TVM">

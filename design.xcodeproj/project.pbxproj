@@ -22,6 +22,7 @@
 		EA45D49D219238270050FDC3 /* cell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA45D49C219238270050FDC3 /* cell.xib */; };
 		EA45D4A121923E5B0050FDC3 /* cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA45D4A021923E5B0050FDC3 /* cell.swift */; };
 		EAA59AA9219B79FC0053A6F8 /* AlarmStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA59AA8219B79FC0053A6F8 /* AlarmStruct.swift */; };
+		EAF8A30321BC754900D0B3AC /* FeesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF8A30221BC754900D0B3AC /* FeesController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +65,7 @@
 		EA45D49C219238270050FDC3 /* cell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = cell.xib; sourceTree = "<group>"; };
 		EA45D4A021923E5B0050FDC3 /* cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cell.swift; sourceTree = "<group>"; };
 		EAA59AA8219B79FC0053A6F8 /* AlarmStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmStruct.swift; sourceTree = "<group>"; };
+		EAF8A30221BC754900D0B3AC /* FeesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeesController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +139,7 @@
 				EA156C4121A1E00F00F29C91 /* SecondViewController.swift */,
 				EA156C4321A1E16100F29C91 /* SecondTableViewCell.swift */,
 				EA156C4521A1E5B100F29C91 /* SecondTableViewCell.xib */,
+				EAF8A30221BC754900D0B3AC /* FeesController.swift */,
 			);
 			path = design;
 			sourceTree = "<group>";
@@ -298,6 +301,7 @@
 				EA45D4A121923E5B0050FDC3 /* cell.swift in Sources */,
 				EA156C4221A1E00F00F29C91 /* SecondViewController.swift in Sources */,
 				EA45D46F21922F4C0050FDC3 /* AppDelegate.swift in Sources */,
+				EAF8A30321BC754900D0B3AC /* FeesController.swift in Sources */,
 				EA156C4421A1E16100F29C91 /* SecondTableViewCell.swift in Sources */,
 				CE9B639621A2110F0014F51A /* TravelManager.swift in Sources */,
 			);
