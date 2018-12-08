@@ -9,8 +9,6 @@
 import UIKit
 
 class SecondTableViewCell: UITableViewCell {
-
-    
     @IBOutlet weak var LabelForSecond: UILabel!
     
     override func awakeFromNib() {
@@ -20,8 +18,6 @@ class SecondTableViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
 
 }

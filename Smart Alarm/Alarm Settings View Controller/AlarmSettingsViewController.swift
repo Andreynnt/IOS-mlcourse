@@ -8,11 +8,9 @@
 
 import UIKit
 
-class SecondViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-
+class AlarmSettingsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var SecondTableView: UITableView!
-    
-    
+
     let listForSecond = [
         "Установить место прибытия",
         "Установить время прибытия",
@@ -37,15 +35,4 @@ class SecondViewController: UIViewController, UITableViewDelegate, UITableViewDa
         cell.LabelForSecond.text = String(listForSecond[indexPath.row])
         return cell
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

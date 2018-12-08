@@ -11,9 +11,7 @@ import Foundation
 import Foundation
 import UIKit
 
-
 struct Alarm {
-    
     var arrivingplace = "Бауманка"
     var arrivingtimehours = 15
     var arrivingtimemin = 40
@@ -24,7 +22,6 @@ struct Alarm {
 }
 
 extension Alarm {
-    
     init?(dict: NSDictionary) {
         guard
             let arrivingplace = dict["arrivingplace"] as? String,
