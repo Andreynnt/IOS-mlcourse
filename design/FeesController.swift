@@ -8,9 +8,21 @@
 
 import UIKit
 
+protocol dataToSecond {
+    func SaveTime(time: Int)
+}
+
 class FeesController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return time.count
+    }
+    
+    var timeDelegate: dataToSecond!
+    var TimeForFees: Int = 0
+    
+    @IBAction func SaveFeesTime(_ sender: Any) {
+        timeDelegate.SaveTime(time: TimeForFees)
+    navigationController?.popViewController(animated: true)
     }
     
 
@@ -30,6 +42,10 @@ class FeesController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
             let titleData = String(time[row])
             let myTitle = NSAttributedString(string: titleData, attributes: [NSAttributedString.Key.foregroundColor:UIColor.white])
             return myTitle
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        TimeForFees = time[row]
     }
 
     override func viewDidLoad() {

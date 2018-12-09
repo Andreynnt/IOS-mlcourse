@@ -118,11 +118,16 @@ class SecondViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
         }
     }
     
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "timeForFees" {
-//            let _ = segue.destination as! FeesController
-//        }
-//    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let FeesVC = segue.destination as! FeesController
+        FeesVC.timeDelegate = self
+    }
     
 
+}
+
+extension SecondViewController: dataToSecond{
+    func SaveTime(time: Int) {
+        self.list2["timeforfees"] = time
+    }
 }
