@@ -12,7 +12,7 @@ class SecondTableViewCell: UITableViewCell {
 
     
     @IBOutlet weak var LabelForSecond: UILabel!
-    
+        
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

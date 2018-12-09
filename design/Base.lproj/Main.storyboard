@@ -19,11 +19,26 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="QTL-du-LQb">
-                                <rect key="frame" x="6" y="110" width="363" height="551"/>
+                                <rect key="frame" x="6" y="70" width="363" height="591"/>
                                 <color key="backgroundColor" red="0.14320272840000001" green="0.14320272840000001" blue="0.14320272840000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JBd-cw-PSU">
-                                <rect key="frame" x="339" y="70" width="30" height="30"/>
+                        </subviews>
+                        <color key="backgroundColor" red="0.14320272842639592" green="0.14320272842639592" blue="0.14320272842639592" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="QTL-du-LQb" firstAttribute="top" secondItem="RpF-jZ-oef" secondAttribute="top" constant="6" id="IbF-1Q-5dM"/>
+                            <constraint firstItem="RpF-jZ-oef" firstAttribute="bottom" secondItem="QTL-du-LQb" secondAttribute="bottom" constant="6" id="S0l-O0-JOp"/>
+                            <constraint firstItem="QTL-du-LQb" firstAttribute="leading" secondItem="RpF-jZ-oef" secondAttribute="leading" constant="6" id="WCc-M5-CYC"/>
+                            <constraint firstItem="RpF-jZ-oef" firstAttribute="trailing" secondItem="QTL-du-LQb" secondAttribute="trailing" constant="6" id="huC-s8-W59"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="RpF-jZ-oef"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Ваши будильники" id="SoG-05-Xy0">
+                        <barButtonItem key="backBarButtonItem" title="Отменить" id="6D8-X1-Bap"/>
+                        <barButtonItem key="leftBarButtonItem" title="Править" style="plain" id="9rk-Pi-0pm"/>
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="rpR-uX-H48">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="JBd-cw-PSU">
+                                <rect key="frame" x="329" y="1" width="30" height="42"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="TAV-S0-OVJ"/>
                                     <constraint firstAttribute="width" constant="30" id="Yqy-pQ-j1d"/>
@@ -36,20 +51,7 @@
                                     <segue destination="Yna-FZ-4Xo" kind="show" identifier="toSecond" id="kWm-VW-ehN"/>
                                 </connections>
                             </button>
-                        </subviews>
-                        <color key="backgroundColor" red="0.14320272842639592" green="0.14320272842639592" blue="0.14320272842639592" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="RpF-jZ-oef" firstAttribute="trailing" secondItem="JBd-cw-PSU" secondAttribute="trailing" constant="6" id="45K-wZ-tvw"/>
-                            <constraint firstItem="RpF-jZ-oef" firstAttribute="bottom" secondItem="QTL-du-LQb" secondAttribute="bottom" constant="6" id="S0l-O0-JOp"/>
-                            <constraint firstItem="QTL-du-LQb" firstAttribute="leading" secondItem="RpF-jZ-oef" secondAttribute="leading" constant="6" id="WCc-M5-CYC"/>
-                            <constraint firstItem="QTL-du-LQb" firstAttribute="top" secondItem="JBd-cw-PSU" secondAttribute="bottom" constant="10" id="X9t-pK-uIg"/>
-                            <constraint firstItem="JBd-cw-PSU" firstAttribute="top" secondItem="RpF-jZ-oef" secondAttribute="top" constant="6" id="YF9-Oy-R5x"/>
-                            <constraint firstItem="RpF-jZ-oef" firstAttribute="trailing" secondItem="QTL-du-LQb" secondAttribute="trailing" constant="6" id="huC-s8-W59"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="RpF-jZ-oef"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Ваши будильники" id="SoG-05-Xy0">
-                        <barButtonItem key="backBarButtonItem" title="Отменить" id="6D8-X1-Bap"/>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="QTL-du-LQb" id="MWG-Ga-Lt6"/>
@@ -85,21 +87,15 @@
                                     <constraint firstAttribute="height" constant="200" id="2Gq-TM-UmO"/>
                                 </constraints>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qUc-aj-czf">
-                                <rect key="frame" x="2" y="621" width="371" height="36"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <color key="tintColor" red="1" green="0.49595150119999998" blue="0.10785564340000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="Удалить будильник"/>
-                                <connections>
-                                    <action selector="DelButton:" destination="Yna-FZ-4Xo" eventType="touchUpInside" id="K9p-d4-lu2"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7bd-Fc-jRV">
-                                <rect key="frame" x="10" y="513" width="355" height="30"/>
+                                <rect key="frame" x="2" y="607" width="371" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="16A-yX-J4b"/>
                                 </constraints>
-                                <state key="normal" title="Сохранить"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Сохранить">
+                                    <color key="titleColor" red="1" green="0.49595150119999998" blue="0.10785564340000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="save:" destination="Yna-FZ-4Xo" eventType="touchUpInside" id="t3u-8F-15v"/>
                                 </connections>
@@ -107,18 +103,15 @@
                         </subviews>
                         <color key="backgroundColor" red="0.14320272840000001" green="0.14320272840000001" blue="0.14320272840000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="7bd-Fc-jRV" firstAttribute="top" secondItem="eUu-Qh-KXm" secondAttribute="bottom" constant="20" id="2Pl-pl-WzL"/>
                             <constraint firstItem="eUu-Qh-KXm" firstAttribute="leading" secondItem="6Ss-3y-fzN" secondAttribute="leading" constant="2" id="9mv-Y8-3pr"/>
-                            <constraint firstItem="qUc-aj-czf" firstAttribute="leading" secondItem="6Ss-3y-fzN" secondAttribute="leading" constant="2" id="AN6-6W-Ft1"/>
                             <constraint firstItem="kzV-OD-L3f" firstAttribute="top" secondItem="6Ss-3y-fzN" secondAttribute="top" constant="3" id="ATg-Nh-dBe"/>
                             <constraint firstItem="kzV-OD-L3f" firstAttribute="leading" secondItem="6Ss-3y-fzN" secondAttribute="leading" constant="2" id="GyY-OO-7g8"/>
-                            <constraint firstItem="7bd-Fc-jRV" firstAttribute="leading" secondItem="6Ss-3y-fzN" secondAttribute="leading" constant="10" id="Nnj-qN-VbX"/>
                             <constraint firstItem="6Ss-3y-fzN" firstAttribute="trailing" secondItem="eUu-Qh-KXm" secondAttribute="trailing" constant="2" id="TEK-kq-Tfx"/>
                             <constraint firstItem="eUu-Qh-KXm" firstAttribute="top" secondItem="kzV-OD-L3f" secondAttribute="bottom" constant="10" id="b1o-y1-Eqj"/>
-                            <constraint firstItem="6Ss-3y-fzN" firstAttribute="bottom" secondItem="qUc-aj-czf" secondAttribute="bottom" constant="10" id="eWK-v6-dr4"/>
+                            <constraint firstItem="6Ss-3y-fzN" firstAttribute="trailing" secondItem="7bd-Fc-jRV" secondAttribute="trailing" constant="2" id="gSG-kt-eGY"/>
+                            <constraint firstItem="7bd-Fc-jRV" firstAttribute="leading" secondItem="6Ss-3y-fzN" secondAttribute="leading" constant="2" id="gnF-be-Zpg"/>
                             <constraint firstItem="6Ss-3y-fzN" firstAttribute="trailing" secondItem="kzV-OD-L3f" secondAttribute="trailing" constant="2" id="k8X-8N-1St"/>
-                            <constraint firstItem="6Ss-3y-fzN" firstAttribute="trailing" secondItem="7bd-Fc-jRV" secondAttribute="trailing" constant="10" id="wy7-fz-s06"/>
-                            <constraint firstItem="6Ss-3y-fzN" firstAttribute="trailing" secondItem="qUc-aj-czf" secondAttribute="trailing" constant="2" id="zSI-rh-SIV"/>
+                            <constraint firstItem="6Ss-3y-fzN" firstAttribute="bottom" secondItem="7bd-Fc-jRV" secondAttribute="bottom" constant="30" id="tg9-S9-Mep"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Ss-3y-fzN"/>
                     </view>

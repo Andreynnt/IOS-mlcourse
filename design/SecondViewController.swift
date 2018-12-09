@@ -35,11 +35,6 @@ class SecondViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
         navigationController?.popViewController(animated: true)
     }
     
-    
-    @IBAction func DelButton(_ sender: Any) {
-        navigationController?.popViewController(animated: true)
-    }
-    
     @IBOutlet weak var TableView: UITableView!
     
     let hoursarr = Array(0...23)

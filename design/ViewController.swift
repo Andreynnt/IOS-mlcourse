@@ -25,16 +25,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     let songName = "s.caf"
     
     var alarms = [Alarm]()
-
-    let list: [String: Any] = [
-        "arrivingplace": "Бауманка",
-        "arrivingtimehours": 15,
-        "arrivingtimemin": 43   ,
-        "timeforfees": 1,
-        "getuptimehours": 12,
-        "getuptimemin": 10,
-        "getupplace": "home"
-    ]
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return alarms.count
@@ -46,14 +36,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         cell.arriveplace.text = alarms[indexPath.row].arrivingplace
         cell.timeonfees.text = String(alarms[indexPath.row].timeforfees)
         cell.arriveTimeMin.text = String(alarms[indexPath.row].arrivingtimemin)
+        cell.getUpTime.text = String(alarms[indexPath.row].getuptimehours)
+        cell.getUpMin.text = String(alarms[indexPath.row].getuptimemin)
         return cell
     }
     
-    func full(){
-        guard let alarm = Alarm(dict: list as NSDictionary) else { return }
-        alarms.append(alarm)
-        
-    }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 90
     }
@@ -63,7 +50,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        full()
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(UINib.init(nibName: "cell", bundle: nil), forCellReuseIdentifier: "alarmcell")

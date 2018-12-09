@@ -29,7 +29,7 @@
                 <constraints>
                     <constraint firstItem="IW3-pq-JWO" firstAttribute="centerY" secondItem="VYo-dg-guZ" secondAttribute="centerY" id="Hbh-Ee-Oin"/>
                     <constraint firstItem="IW3-pq-JWO" firstAttribute="leading" secondItem="VYo-dg-guZ" secondAttribute="leading" constant="5" id="fKn-t9-0ec"/>
-                    <constraint firstAttribute="trailing" secondItem="IW3-pq-JWO" secondAttribute="trailing" constant="5" id="ndA-aA-fSz"/>
+                    <constraint firstAttribute="trailing" secondItem="IW3-pq-JWO" secondAttribute="trailing" constant="5" id="foS-Tx-mbR"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
