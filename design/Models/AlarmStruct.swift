@@ -13,18 +13,17 @@ import UIKit
 
 
 struct Alarm {
-    
-    var arrivingplace = "Бауманка"
-    var arrivingtimehours = 15
-    var arrivingtimemin = 40
-    var timeforfees = 14
-    var getuptimehours = 0
-    var getuptimemin = 0
-    var getupplace = ""
+    var arrivingPlace = "Бауманка"
+    var arrivingTimeHours = 15
+    var arrivingTimeMin = 40
+    var timeForFees = 14
+    var getupTimeHours = 8
+    var getupTimeMin = 30
+    var getupPlace = "Дом"
+    var transport = TransportType.auto
 }
 
 extension Alarm {
-    
     init?(dict: NSDictionary) {
         guard
             let arrivingplace = dict["arrivingplace"] as? String,
@@ -36,12 +35,12 @@ extension Alarm {
             let getupplace = dict["getupplace"] as? String
             else { return nil }
         
-        self.arrivingplace = arrivingplace
-        self.arrivingtimehours = arrivingtimehours
-        self.arrivingtimemin = arrivingtimemin
-        self.timeforfees = timeforfees
-        self.getuptimehours = getuptimehours
-        self.getuptimemin = getuptimemin
-        self.getupplace = getupplace
+        self.arrivingPlace = arrivingplace
+        self.arrivingTimeHours = arrivingtimehours
+        self.arrivingTimeMin = arrivingtimemin
+        self.timeForFees = timeforfees
+        self.getupTimeHours = getuptimehours
+        self.getupTimeMin = getuptimemin
+        self.getupPlace = getupplace
     }
 }

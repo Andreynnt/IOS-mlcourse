@@ -8,11 +8,10 @@
 
 import UIKit
 
-class SecondTableViewCell: UITableViewCell {
-
-    
+class AlarmSettingsCell: UITableViewCell {
     @IBOutlet weak var LabelForSecond: UILabel!
-        
+    @IBOutlet weak var rightLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

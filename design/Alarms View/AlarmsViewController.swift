@@ -10,34 +10,60 @@ import UIKit
 import UserNotifications
 
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource
-{
+class AlarmsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    @IBOutlet weak var tableView: UITableView!
     
-    @IBAction func NewAlarm(_ sender: UIButton) {
-            performSegue(withIdentifier: "toSecond", sender: self)
+    let songName = "s.caf"
+    var alarms = [Alarm]()
+    
+    var selectedAlarm: Alarm?
+    var selectedIndexPath: IndexPath?
+    
+    let cellIdentifier = "alarmcell"
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        //to do заменить на бд
+        let alarm1 = Alarm()
+        let alarm2 = Alarm()
+        let alarm3 = Alarm()
+        alarms.append(alarm1)
+        alarms.append(alarm2)
+        alarms.append(alarm3)
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.register(UINib.init(nibName: "AlarmCell", bundle: nil), forCellReuseIdentifier: cellIdentifier)
+        //testTime()
+    }
+    
+    //изменение будильника
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedAlarm = alarms[indexPath.row]
+        selectedIndexPath = indexPath
+        performSegue(withIdentifier: "toSecond", sender: self)
+    }
+    
+    @IBAction func createNewAlarm(_ sender: UIBarButtonItem) {
+        performSegue(withIdentifier: "toSecond", sender: self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let SecondVC = segue.destination as! SecondViewController
-        SecondVC.DataDelegate = self
+        if segue.identifier == "toSecond" {
+            let settigsViewController = segue.destination as! AlarmSettingsViewController
+            settigsViewController.alarm = selectedAlarm
+            settigsViewController.indexPathInAlarmsView = selectedIndexPath
+            settigsViewController.delegate = self
+        }
     }
-    
-    let songName = "s.caf"
-    
-    var alarms = [Alarm]()
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return alarms.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "alarmcell", for: indexPath) as! Cell
-        cell.arrivetime.text = String(alarms[indexPath.row].arrivingtimehours)
-        cell.arriveplace.text = alarms[indexPath.row].arrivingplace
-        cell.timeonfees.text = String(alarms[indexPath.row].timeforfees)
-        cell.arriveTimeMin.text = String(alarms[indexPath.row].arrivingtimemin)
-        cell.getUpTime.text = String(alarms[indexPath.row].getuptimehours)
-        cell.getUpMin.text = String(alarms[indexPath.row].getuptimemin)
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! AlarmCell
+        cell.fill(alarm: alarms[indexPath.row])
         return cell
     }
     
@@ -45,16 +71,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         return 90
     }
     
-    
-    @IBOutlet weak var tableView: UITableView!
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        tableView.dataSource = self
-        tableView.delegate = self
-        tableView.register(UINib.init(nibName: "cell", bundle: nil), forCellReuseIdentifier: "alarmcell")
-        testTime()
-        
+    override func viewWillAppear(_ animated: Bool) {
+        if let index = tableView.indexPathForSelectedRow {
+            tableView.deselectRow(at: index, animated: true)
+        }
     }
     
     func testTime() {
@@ -94,19 +114,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         return dateComponents
     }
     
-    //просто функция, которая вызовет пуш через минуту. Нам она не нужна
-    @IBAction func touchPushButton(_ sender: UIButton) {
-        let now = Date()
-        let calendar = Calendar.current
-        let hour = calendar.component(.hour, from: now)
-        let minutes = calendar.component(.minute, from: now)
-        //запускаем будильник через минуту
-        var date = DateComponents()
-        date.hour = hour
-        date.minute = minutes + 1
-        firePush(at: date)
-    }
-    
     //ставим пуш на нужное время
     func firePush(at date: DateComponents?) {
         guard let parsedDate = date else { return }
@@ -120,14 +127,19 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let request = UNNotificationRequest(identifier: "alarm", content: content, trigger: trigger)
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
     }
-    
 }
 
-extension ViewController: dataToFirst{
-    func SaveData(list: Alarm)  {
-        alarms.append(list)
+extension AlarmsViewController: AlarmSettingsDelegate {
+    func addAlarm(alarm: Alarm)  {
+        alarms.append(alarm)
         DispatchQueue.main.async {
             self.tableView.reloadData()
+        }
+    }
+    func  changeAlarm(alarm: Alarm, indexPath: IndexPath) {
+        alarms[indexPath.row] = alarm
+        DispatchQueue.main.async {
+            self.tableView.reloadRows(at: [indexPath], with: .none)
         }
     }
 }
