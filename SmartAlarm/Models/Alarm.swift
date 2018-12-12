@@ -13,14 +13,21 @@ import UIKit
 
 
 struct Alarm {
-    var arrivingPlace = "Бауманка"
-    var arrivingTimeHours = 15
-    var arrivingTimeMin = 40
-    var timeForFees = 14
-    var getupTimeHours = 8
-    var getupTimeMin = 30
-    var getupPlace = "Дом"
+    var arrivingPlace = "Moscow"
+    var arrivingTimeHours = 12
+    var arrivingTimeMin = 10
+    var timeForFees = 10
+    var getupTimeHours = 4
+    var getupTimeMin = 20
+    var getupPlace = "Moscow"
     var transport = TransportType.auto
+    
+    var isOn = false
+    var id = 0
+    var arrivingLatitude = 54.98934199182929
+    var arrivingLongtitude = 73.3682119846344
+    var getupLatitude = 54.98934199182929
+    var getupLongtitude = 73.3682119846344
 }
 
 extension Alarm {

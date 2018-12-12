@@ -10,8 +10,8 @@ import UIKit
 import MapKit
 
 protocol MapViewControllerDelegate {
-    func changeArrivalСoordinates(data: String)
-    func changeDispatchСoordinates(data: String)
+    func changeArrivalСoordinates(data: String, alarm: Alarm)
+    func changeDispatchСoordinates(data: String, alarm: Alarm)
 }
 
 class MapViewController: UIViewController, UISearchBarDelegate {
@@ -20,6 +20,7 @@ class MapViewController: UIViewController, UISearchBarDelegate {
     var delegate:MapViewControllerDelegate?
     var placeName: String?
     var isArrivalMap = false
+    var alarm: Alarm?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,11 +76,15 @@ class MapViewController: UIViewController, UISearchBarDelegate {
                 annotation.title = searchBar.text
                 annotation.coordinate = CLLocationCoordinate2DMake(latitude!, longitude!)
                 self.myMapView.addAnnotation(annotation)
-                //координаты
-                //print(longitude ?? 0)
-                //rint(latitude ?? 0)
-                //print(annotation.title ?? "")
-                //Zooming
+                
+                if self.isArrivalMap {
+                    self.alarm?.arrivingLongtitude = longitude ?? 0
+                    self.alarm?.arrivingLatitude = latitude ?? 0
+                } else {
+                    self.alarm?.getupLongtitude = longitude ?? 0
+                    self.alarm?.getupLatitude = latitude ?? 0
+                }
+        
                 let coordinate:CLLocationCoordinate2D = CLLocationCoordinate2DMake(latitude!, longitude!)
                 let span = MKCoordinateSpan(latitudeDelta: 0.1,longitudeDelta: 0.1)
                 let region = MKCoordinateRegion(center: coordinate,span: span)
@@ -97,9 +102,9 @@ class MapViewController: UIViewController, UISearchBarDelegate {
             return
         }
         if isArrivalMap {
-            delegate?.changeArrivalСoordinates(data: parsedPlaceName)
+            delegate?.changeArrivalСoordinates(data: parsedPlaceName, alarm: alarm!)
         } else {
-            delegate?.changeDispatchСoordinates(data: parsedPlaceName)
+            delegate?.changeDispatchСoordinates(data: parsedPlaceName, alarm: alarm!)
         }
         self.navigationController?.popViewController(animated: true)
     }

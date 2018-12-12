@@ -20,9 +20,9 @@ class AlarmCell: UITableViewCell {
         super.awakeFromNib()
     }
     
-    func fill(alarm: Alarm) {
+    func fill(alarm: AlarmCoreData) {
         arrivetime.text = String(alarm.arrivingTimeHours)
-        arriveplace.text = String(alarm.arrivingPlace)
+        arriveplace.text = String(alarm.arrivingPlace!)
         timeonfees.text = String(alarm.timeForFees)
         arriveTimeMin.text = String(alarm.arrivingTimeMin)
         getUpTime.text = String(alarm.getupTimeHours)

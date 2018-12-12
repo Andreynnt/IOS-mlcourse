@@ -13,7 +13,7 @@
         <!--Ваши будильники-->
         <scene sceneID="p7u-Av-ufx">
             <objects>
-                <viewController id="XUn-tA-jEv" customClass="AlarmsViewController" customModule="design" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="XUn-tA-jEv" customClass="AlarmsViewController" customModule="SmartAlarm" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pz2-aB-d0C">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -34,7 +34,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Ваши будильники" id="SoG-05-Xy0">
                         <barButtonItem key="backBarButtonItem" title="Отменить" id="6D8-X1-Bap"/>
-                        <barButtonItem key="leftBarButtonItem" title="Править" style="plain" id="9rk-Pi-0pm"/>
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="9rk-Pi-0pm"/>
                         <barButtonItem key="rightBarButtonItem" style="plain" id="rpR-uX-H48">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="JBd-cw-PSU">
                                 <rect key="frame" x="329" y="1" width="30" height="42"/>
@@ -66,7 +66,7 @@
         <!--Alarm Settings View Controller-->
         <scene sceneID="6ir-Q3-NC8">
             <objects>
-                <viewController storyboardIdentifier="newAlarm" id="Yna-FZ-4Xo" customClass="AlarmSettingsViewController" customModule="design" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="newAlarm" id="Yna-FZ-4Xo" customClass="AlarmSettingsViewController" customModule="SmartAlarm" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ar0-p7-Iym">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -133,7 +133,7 @@
         <!--Fees Controller-->
         <scene sceneID="wzz-NU-Qui">
             <objects>
-                <viewController id="2rD-UC-V2K" customClass="FeesController" customModule="design" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="2rD-UC-V2K" customClass="FeesController" customModule="SmartAlarm" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="HVg-UJ-1km">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -192,7 +192,7 @@
         <!--Transport View Controller-->
         <scene sceneID="alH-Ri-rIU">
             <objects>
-                <viewController id="T2i-rl-pGG" customClass="TransportViewController" customModule="design" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="T2i-rl-pGG" customClass="TransportViewController" customModule="SmartAlarm" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="lL4-UW-rMX">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -229,7 +229,7 @@
         <!--Карта-->
         <scene sceneID="5gy-GN-44b">
             <objects>
-                <viewController title="Карта" id="w76-uA-tse" customClass="MapViewController" customModule="design" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Карта" id="w76-uA-tse" customClass="MapViewController" customModule="SmartAlarm" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bKy-Tj-Xho">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

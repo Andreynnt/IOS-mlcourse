@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import UserNotifications
 
 protocol  AlarmSettingsDelegate {
-    func addAlarm(alarm: Alarm)
+    func addAlarm(alarmCoreData: AlarmCoreData)
     func changeAlarm(alarm: Alarm, indexPath: IndexPath)
 }
 
@@ -20,6 +21,7 @@ class AlarmSettingsViewController: UIViewController, UIPickerViewDataSource, UIP
     
     let hoursarr = Array(0...23)
     let minutsarr = Array(0...59)
+    let songName = "s.caf"
     
     let settingsCellIdentifier = "secondCell"
     
@@ -88,13 +90,20 @@ class AlarmSettingsViewController: UIViewController, UIPickerViewDataSource, UIP
     
     @IBAction func save(_ sender: Any) {
          if isCreationOfNewAlarm {
-            //to do бд
-            delegate?.addAlarm(alarm: alarm!)
+            let managedObject = AlarmCoreData()
+            managedObject.fill(from: alarm!)
+            CoreDataManager.instance.saveContext()
+            delegate?.addAlarm(alarmCoreData: managedObject)
         } else {
             if let previousViewIndexPath = indexPathInAlarmsView, let updatedAlarm = alarm {
                 delegate?.changeAlarm(alarm: updatedAlarm, indexPath: previousViewIndexPath)
             }
         }
+        setPush(arrivingLatitude: alarm!.arrivingLatitude,
+                arrivingLongtitude: alarm!.arrivingLongtitude,
+                getupLatitude: alarm!.getupLatitude,
+                getupLongtitude: alarm!.getupLongtitude,
+                timeForPacking: alarm!.timeForFees)
         navigationController?.popViewController(animated: true)
     }
     
@@ -179,6 +188,7 @@ class AlarmSettingsViewController: UIViewController, UIPickerViewDataSource, UIP
         if segue.identifier == "toMapView" {
             let destinationVC = segue.destination as! MapViewController
             destinationVC.delegate = self
+            destinationVC.alarm = alarm!
             destinationVC.isArrivalMap = openArrivalMap!
             return
         }
@@ -194,24 +204,93 @@ class AlarmSettingsViewController: UIViewController, UIPickerViewDataSource, UIP
         }
     }
     
-    func recivieData(data: String) {
+    func setPush(arrivingLatitude: Double, arrivingLongtitude: Double,
+                 getupLatitude: Double, getupLongtitude: Double, timeForPacking: Int) {
+    
+        print("setPush()")
+        //callback, который запустится после того, как придет ответ
+        let callback = { (time: Int) -> Void in
+            if time == -1 {
+                // у написано так, что в случае любой ошибки вызовется
+                // этот колббек с парметром -1. Можно изменить
+                print("Something goes wrong with api")
+            }
+            print("Duration for this journey (with time for packing) is: \(time) (seconds)")
+            //нужно, чтобы минимальный интервал между пушами был 60 сек
+            //let parsedTime = time < 60 ? 60 : time
+            let date = self.getDateForPush(secondsForRoad: time,
+                                           tagetHour: self.alarm!.arrivingTimeHours,
+                                           targetMinute: self.alarm!.arrivingTimeMin,
+                                           timeForPacking: timeForPacking)
+            self.firePush(at: date)
+        }
         
+        let travelManager = TravelManager(callback: callback)
+        let myAdress = String(getupLatitude) + "," + String(getupLongtitude)
+        let secondAdress = String(arrivingLatitude) + "," + String(arrivingLongtitude)
+   
+        //внутри этого метода выполнится коллбэк, объявленный ранее
+        travelManager.getTravelTime(origin: myAdress, destination: secondAdress, mode: TravelModes.transit, additionalMinutes: timeForPacking)
     }
     
-    func takeCoor(data: String) {
+    
+    //перевод полученных из апи секунд + времени на сборы в нужный формат
+    func getDateForPush(secondsForRoad: Int, tagetHour: Int, targetMinute: Int, timeForPacking: Int) -> DateComponents {
+        let nowDate = Date()
+        let nowCalendar = Calendar.current
         
+        var targetDateComponents = DateComponents()
+        targetDateComponents.year = nowCalendar.component(.year, from: nowDate)
+        targetDateComponents.month = nowCalendar.component(.month, from: nowDate)
+        targetDateComponents.day = nowCalendar.component(.day, from: nowDate)
+        targetDateComponents.hour = tagetHour
+        targetDateComponents.minute = targetMinute
+        let targetDate = nowCalendar.date(from: targetDateComponents)
+    
+        let secondsForFeesAndRoad = secondsForRoad + timeForPacking * 60
+        var getupDateComponents = DateComponents()
+        getupDateComponents.second = -1 * secondsForFeesAndRoad
+        
+        print("secondsForFeesAndRoad = \(secondsForFeesAndRoad)")
+        let resultDate = Calendar.current.date(byAdding: getupDateComponents, to: targetDate!)
+        
+        let unitFlags:Set<Calendar.Component> = [
+            .hour, .day, .month,
+            .year,.minute,.hour,.second,
+            .calendar]
+        let resDateComponents = Calendar.current.dateComponents(unitFlags, from: resultDate!)
+        print("GET UP TIME IS:")
+        print("day = \(resDateComponents.day!), hour = \(resDateComponents.hour!), minute = \(resDateComponents.minute!)")
+        return resDateComponents
     }
     
+    //ставим пуш на нужное время
+    func firePush(at date: DateComponents?) {
+        guard let parsedDate = date else { return }
+        
+        let content = UNMutableNotificationContent()
+        content.title = "Good morning"
+        content.body = "Please stand up, please stand up"
+        content.sound = UNNotificationSound.init(named: UNNotificationSoundName(rawValue: songName))
+        
+        let trigger = UNCalendarNotificationTrigger(dateMatching: parsedDate, repeats: true)
+        let request = UNNotificationRequest(identifier: "alarm", content: content, trigger: trigger)
+        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+    }
 }
 
 extension AlarmSettingsViewController: MapViewControllerDelegate {
-    func changeArrivalСoordinates(data: String) {
+    func changeArrivalСoordinates(data: String, alarm: Alarm) {
         self.alarm?.arrivingPlace = data
+        self.alarm?.arrivingLongtitude = alarm.arrivingLongtitude
+        self.alarm?.arrivingLatitude = alarm.arrivingLatitude
         self.TableView.reloadRows(at: [selectedRowIndexPath!], with: .none)
     }
     
-    func changeDispatchСoordinates(data: String) {
+    func changeDispatchСoordinates(data: String, alarm: Alarm) {
         self.alarm?.getupPlace = data
+        self.alarm?.getupLongtitude = alarm.getupLongtitude
+        self.alarm?.getupLatitude = alarm.getupLatitude
         self.TableView.reloadRows(at: [selectedRowIndexPath!], with: .none)
     }
 }

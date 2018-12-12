@@ -22,7 +22,7 @@ class TransportViewController: UIViewController, UITableViewDelegate, UITableVie
     
     let transportDict = [
         "Автомобиль": TransportType.auto,
-        "Общественный транспорт:": TransportType.publicTransport,
+        "Общественный транспорт": TransportType.publicTransport,
         "Велосипед": TransportType.bicycle,
         "Пешком": TransportType.onFoot
     ]
