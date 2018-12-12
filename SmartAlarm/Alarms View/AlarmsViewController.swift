@@ -45,6 +45,7 @@ class AlarmsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     @IBAction func createNewAlarm(_ sender: UIBarButtonItem) {
+        selectedAlarm = nil
         performSegue(withIdentifier: "toSecond", sender: self)
     }
     

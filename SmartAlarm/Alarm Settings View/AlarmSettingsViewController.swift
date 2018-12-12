@@ -47,6 +47,7 @@ class AlarmSettingsViewController: UIViewController, UIPickerViewDataSource, UIP
         TableView.dataSource = self
         TableView.delegate = self
         if alarm == nil {
+            alarm = Alarm()
             isCreationOfNewAlarm = true
         }
         TableView.register(UINib.init(nibName: "AlarmSettingsCell", bundle: nil), forCellReuseIdentifier: settingsCellIdentifier)
@@ -88,10 +89,7 @@ class AlarmSettingsViewController: UIViewController, UIPickerViewDataSource, UIP
     @IBAction func save(_ sender: Any) {
          if isCreationOfNewAlarm {
             //to do бд
-            var newAlarm = Alarm()
-            newAlarm.arrivingPlace = "Рим"
-            newAlarm.getupPlace = "Москва"
-            delegate?.addAlarm(alarm: newAlarm)
+            delegate?.addAlarm(alarm: alarm!)
         } else {
             if let previousViewIndexPath = indexPathInAlarmsView, let updatedAlarm = alarm {
                 delegate?.changeAlarm(alarm: updatedAlarm, indexPath: previousViewIndexPath)
