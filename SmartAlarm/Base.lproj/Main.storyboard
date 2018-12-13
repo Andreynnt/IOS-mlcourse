@@ -267,6 +267,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="myMapView" destination="PxD-YG-Luw" id="iv5-Fe-ffL"/>
+                        <outlet property="readyButton" destination="TRr-Py-g9T" id="oCi-fe-8Z8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kn1-Jn-uDM" userLabel="First Responder" sceneMemberID="firstResponder"/>

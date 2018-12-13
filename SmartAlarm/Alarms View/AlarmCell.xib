@@ -11,7 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="alarmcell" rowHeight="82" id="we1-aW-nXM" customClass="AlarmCell" customModule="design" customModuleProvider="target">
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="alarmcell" rowHeight="82" id="we1-aW-nXM" customClass="AlarmCell" customModule="SmartAlarm" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="375" height="82"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="we1-aW-nXM" id="vYn-s8-Jcd">
@@ -112,7 +112,7 @@
                             <constraint firstAttribute="width" constant="23" id="oe4-zM-adB"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=":" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7vx-aO-6rB">
@@ -122,7 +122,7 @@
                             <constraint firstAttribute="height" constant="21" id="vLt-rY-kBl"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="29" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dVp-Z5-EEO">
@@ -132,11 +132,11 @@
                             <constraint firstAttribute="height" constant="21" id="1dO-Bs-pU2"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <nil key="highlightedColor"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="highlightedColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                     </label>
                 </subviews>
-                <color key="backgroundColor" red="0.14320272840000001" green="0.14320272840000001" blue="0.14320272840000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                <color key="backgroundColor" red="0.14509803921568626" green="0.14509803921568626" blue="0.14509803921568626" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 <constraints>
                     <constraint firstItem="0nB-r3-cTi" firstAttribute="leading" secondItem="vYn-s8-Jcd" secondAttribute="leadingMargin" constant="3" id="2IY-51-oPN"/>
                     <constraint firstItem="7Md-TM-TC3" firstAttribute="top" secondItem="vYn-s8-Jcd" secondAttribute="topMargin" constant="1" id="2zJ-xo-0lA"/>
@@ -170,6 +170,8 @@
                 <outlet property="arrivetime" destination="wC6-zg-wct" id="W1e-X9-gix"/>
                 <outlet property="getUpMin" destination="Vkx-gS-tkq" id="hWc-ZO-2Dk"/>
                 <outlet property="getUpTime" destination="dVp-Z5-EEO" id="ihI-uL-i3f"/>
+                <outlet property="getupHourLabel" destination="dVp-Z5-EEO" id="SKE-wY-drx"/>
+                <outlet property="getupMinuteLabel" destination="Vkx-gS-tkq" id="qkf-Do-gKy"/>
                 <outlet property="timeonfees" destination="GP9-h1-jRB" id="X53-KT-euE"/>
             </connections>
             <point key="canvasLocation" x="-74.400000000000006" y="-134.93253373313345"/>
