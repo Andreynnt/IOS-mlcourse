@@ -23,6 +23,8 @@ class AlarmsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     let cellIdentifier = "alarmcell"
     
+    var lastId = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -31,6 +33,10 @@ class AlarmsViewController: UIViewController, UITableViewDelegate, UITableViewDa
             alarmsCoreData = self.fetchedResultsController.fetchedObjects as! [AlarmCoreData]
         } catch {
             print("ERROR WITH try self.fetchedResultsController.performFetch()")
+        }
+        
+        if !alarmsCoreData.isEmpty {
+            lastId = Int(alarmsCoreData.last!.id)
         }
         
         tableView.dataSource = self
@@ -54,8 +60,8 @@ class AlarmsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toSecond" {
             let settigsViewController = segue.destination as! AlarmSettingsViewController
-            //to do поставить кор дату
             settigsViewController.alarm = selectedAlarm
+            settigsViewController.lastAlarmId = lastId
             settigsViewController.indexPathInAlarmsView = selectedIndexPath
             settigsViewController.delegate = self
         }
@@ -68,6 +74,7 @@ class AlarmsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! AlarmCell
         cell.fill(alarm: alarmsCoreData[indexPath.row])
+        //print("Id = \(alarmsCoreData[indexPath.row].id)")
         return cell
     }
     
@@ -80,20 +87,40 @@ class AlarmsViewController: UIViewController, UITableViewDelegate, UITableViewDa
             tableView.deselectRow(at: index, animated: true)
         }
     }
+    
+    @available(iOS 11.0, *)
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath)
+        -> UISwipeActionsConfiguration? {
+            let delete = deleteAction(at: indexPath)
+            return UISwipeActionsConfiguration(actions: [delete])
+    }
+    
+    @available(iOS 11.0, *)
+    func deleteAction(at indexPath: IndexPath) -> UIContextualAction {
+        let action = UIContextualAction(style: .destructive, title: "Delete") { (action, _, completion) in
+            let coreDataObject = self.alarmsCoreData[indexPath.row]
+            self.alarmsCoreData.remove(at: indexPath.row)
+            self.tableView.deleteRows(at: [indexPath], with: .automatic)
+            CoreDataManager.instance.managedObjectContext.delete(coreDataObject)
+            CoreDataManager.instance.saveContext()
+            completion(true)
+        }
+        action.image = UIImage(named: "icons8-waste-70")
+        return action
+    }
 }
 
 extension AlarmsViewController: AlarmSettingsDelegate {
     func addAlarm(alarmCoreData: AlarmCoreData)  {
         alarmsCoreData.append(alarmCoreData)
+        lastId += 1
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
     }
     
     func changeAlarm(alarm: Alarm, indexPath: IndexPath) {
-        let alarmCoreData = AlarmCoreData()
-        alarmCoreData.fill(from: alarm)
-        alarmsCoreData[indexPath.row] = alarmCoreData
+        alarmsCoreData[indexPath.row].fill(from: alarm)
         DispatchQueue.main.async {
             self.tableView.reloadRows(at: [indexPath], with: .none)
         }

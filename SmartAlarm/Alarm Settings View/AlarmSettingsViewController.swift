@@ -30,6 +30,8 @@ class AlarmSettingsViewController: UIViewController, UIPickerViewDataSource, UIP
     var selectedRowIndexPath: IndexPath?
     var isCreationOfNewAlarm = false
     
+    var lastAlarmId = 0
+    
     //чтобы определить, открываем карту выбора места прибытия или отправки
     var openArrivalMap: Bool?
     
@@ -49,6 +51,7 @@ class AlarmSettingsViewController: UIViewController, UIPickerViewDataSource, UIP
         if alarm == nil {
             alarm = Alarm()
             isCreationOfNewAlarm = true
+            alarm!.id = lastAlarmId + 1
         }
         TableView.register(UINib.init(nibName: "AlarmSettingsCell", bundle: nil), forCellReuseIdentifier: settingsCellIdentifier)
     }
