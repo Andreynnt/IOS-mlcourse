@@ -41,6 +41,10 @@ class TransportViewController: UIViewController, UITableViewDelegate, UITableVie
         return dictKeys!.count
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 80
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MyCell", for: indexPath)
         let value = dictKeys![indexPath.row]
