@@ -15,6 +15,7 @@ class PushesManager {
     
     func setPush(alarm: Alarm, changeAlarmsViewCallback: @escaping (_ alarm: Alarm) -> Void) {
         //callback, который запустится после того, как придет ответ
+        let pushText = "Let's go to \(alarm.arrivingPlace)!"
         let callback = { (time: Int) -> Void in
             if time == -1 {
                 print("Something goes wrong with api")
@@ -23,7 +24,7 @@ class PushesManager {
             //нужно, чтобы минимальный интервал между пушами был 60 сек
             //let parsedTime = time < 60 ? 60 : time
             let date = self.getDateForPush(secondsForRoad: time, alarm: alarm, callback: changeAlarmsViewCallback)
-            self.firePush(at: date)
+            self.firePush(at: date, text: pushText)
         }
         
         let travelManager = TravelManager(callback: callback)
@@ -69,12 +70,12 @@ class PushesManager {
     }
     
     //ставим пуш на нужное время
-    func firePush(at date: DateComponents?) {
+    func firePush(at date: DateComponents?, text: String) {
         guard let parsedDate = date else { return }
         
         let content = UNMutableNotificationContent()
-        content.title = "Good morning, sir"
-        content.body = "Please stand up, please stand up"
+        content.title = "Wake up, sir"
+        content.body = text
         content.sound = UNNotificationSound.init(named: UNNotificationSoundName(rawValue: songName))
         
         let trigger = UNCalendarNotificationTrigger(dateMatching: parsedDate, repeats: true)
