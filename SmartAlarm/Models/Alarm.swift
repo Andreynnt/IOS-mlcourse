@@ -16,7 +16,7 @@ struct Alarm {
     var arrivingPlace = "Moscow"
     var arrivingTimeHours = 12
     var arrivingTimeMin = 0
-    var timeForFees = 10
+    var timeForFees = 0
     var getupTimeHours = 4
     var getupTimeMin = 20
     var getupPlace = "Moscow"

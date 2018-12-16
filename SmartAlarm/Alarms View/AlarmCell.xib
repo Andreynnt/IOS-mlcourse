@@ -24,6 +24,9 @@
                             <constraint firstAttribute="height" constant="31" id="eYO-aJ-TOw"/>
                             <constraint firstAttribute="width" constant="47" id="gIl-dT-VGP"/>
                         </constraints>
+                        <connections>
+                            <action selector="clickOnSwitch:" destination="we1-aW-nXM" eventType="valueChanged" id="woF-qo-e3s"/>
+                        </connections>
                     </switch>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Время прибытия: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fu3-AG-eDu">
                         <rect key="frame" x="19" y="14" width="143.5" height="17"/>
@@ -165,6 +168,7 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="alarmSwitch" destination="8oJ-bM-hyw" id="Kd5-t4-D7Z"/>
                 <outlet property="arriveTimeMin" destination="mVs-1Z-ZnX" id="p3F-iz-uZZ"/>
                 <outlet property="arriveplace" destination="4jH-Rj-HKC" id="SMd-Ra-8jY"/>
                 <outlet property="arrivetime" destination="wC6-zg-wct" id="W1e-X9-gix"/>

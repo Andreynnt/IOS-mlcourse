@@ -11,7 +11,20 @@ import UserNotifications
 
 class PushesManager {
     
+    private static let pushesManager = {
+        return PushesManager()
+    }()
+    
+    class func shared() -> PushesManager {
+        return pushesManager
+    }
+    
+    private init() {
+        
+    }
+    
     let songName = "song.caf"
+    let defaultAlarmIdentifier = "alarm_"
     
     func setPush(alarm: Alarm, changeAlarmsViewCallback: @escaping (_ alarm: Alarm) -> Void) {
         //callback, который запустится после того, как придет ответ
@@ -24,7 +37,7 @@ class PushesManager {
             //нужно, чтобы минимальный интервал между пушами был 60 сек
             //let parsedTime = time < 60 ? 60 : time
             let date = self.getDateForPush(secondsForRoad: time, alarm: alarm, callback: changeAlarmsViewCallback)
-            self.firePush(at: date, text: pushText)
+            self.firePush(at: date, text: pushText, alarmId: alarm.id)
         }
         
         let travelManager = TravelManager(callback: callback)
@@ -70,7 +83,7 @@ class PushesManager {
     }
     
     //ставим пуш на нужное время
-    func firePush(at date: DateComponents?, text: String) {
+    func firePush(at date: DateComponents?, text: String, alarmId: Int) {
         guard let parsedDate = date else { return }
         
         let content = UNMutableNotificationContent()
@@ -79,7 +92,15 @@ class PushesManager {
         content.sound = UNNotificationSound.init(named: UNNotificationSoundName(rawValue: songName))
         
         let trigger = UNCalendarNotificationTrigger(dateMatching: parsedDate, repeats: true)
-        let request = UNNotificationRequest(identifier: "alarm", content: content, trigger: trigger)
+        
+        //для каждого будилтника уникальный id
+        let identifier = defaultAlarmIdentifier + String(alarmId)
+        let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+    }
+    
+    func deletePush(alarmId: Int) {
+        let identifier = defaultAlarmIdentifier + String(alarmId)
+        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [identifier])
     }
 }

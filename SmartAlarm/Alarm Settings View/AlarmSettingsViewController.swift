@@ -187,21 +187,22 @@ class AlarmSettingsViewController: UIViewController, UIPickerViewDataSource, UIP
     }
     
     @IBAction func save(_ sender: Any) {
-        let pushesManager = PushesManager()
         if isCreationOfNewAlarm {
-            pushesManager.setPush(alarm: alarm!) { (alarm: Alarm) -> Void in
+            PushesManager.shared().setPush(alarm: alarm!) { (alarm: Alarm) -> Void in
                 let managedObject = AlarmCoreData()
                 managedObject.fill(from: alarm)
+                managedObject.isOn = true
                 CoreDataManager.instance.saveContext()
                 self.delegate?.addAlarm(alarmCoreData: managedObject)
             }
         } else {
             if let previousViewIndexPath = indexPathInAlarmsView, let updatedAlarm = alarm {
-                pushesManager.setPush(alarm: updatedAlarm) { (alarm: Alarm) -> Void in
+                PushesManager.shared().setPush(alarm: updatedAlarm) { (alarm: Alarm) -> Void in
                     self.delegate?.changeAlarm(alarm: alarm, indexPath: previousViewIndexPath)
                 }
             }
         }
+        
         navigationController?.popViewController(animated: true)
     }
     

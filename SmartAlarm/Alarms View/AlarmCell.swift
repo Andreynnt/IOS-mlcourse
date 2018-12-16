@@ -17,18 +17,45 @@ class AlarmCell: UITableViewCell {
     @IBOutlet weak var arriveTimeMin: UILabel!
     @IBOutlet weak var getupHourLabel: UILabel!
     @IBOutlet weak var getupMinuteLabel: UILabel!
+    @IBOutlet weak var alarmSwitch: UISwitch!
+    
+    var alarmCoreData: AlarmCoreData?
     
     override func awakeFromNib() {
         super.awakeFromNib()
     }
     
     func fill(alarm: AlarmCoreData) {
+        alarmCoreData = alarm
         arrivetime.text = String(alarm.arrivingTimeHours)
         arriveplace.text = String(alarm.arrivingPlace!)
         timeonfees.text = String(alarm.timeForFees)
         arriveTimeMin.text = getTwoNumbersString(alarm.arrivingTimeMin)
         getupHourLabel.text = String(alarm.getupTimeHours)
         getupMinuteLabel.text = getTwoNumbersString(alarm.getupTimeMin)
+        if alarm.isOn {
+            alarmSwitch.isOn = true
+        } else {
+            alarmSwitch.isOn = false
+        }
+    }
+    
+    @IBAction func clickOnSwitch(_ sender: UISwitch) {
+        guard let alarm = alarmCoreData else { return }
+        if alarm.isOn {
+            alarm.setValue(false, forKey: "isOn")
+            alarm.isOn = false
+            PushesManager.shared().deletePush(alarmId: Int(alarm.id))
+        } else {
+            alarm.setValue(true, forKey: "isOn")
+            alarm.isOn = true
+            let filledAlarm = alarm.makeAlarm()
+            PushesManager.shared().setPush(alarm: filledAlarm) { (alarm: Alarm) -> Void in
+                
+            }
+        }
+        
+        CoreDataManager.instance.saveContext()
     }
     
     //если у нас число 5, то вернет строку 05
