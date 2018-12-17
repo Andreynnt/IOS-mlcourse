@@ -17,6 +17,7 @@ protocol MapViewControllerDelegate {
 
 class MapViewController: UIViewController, UISearchBarDelegate, CLLocationManagerDelegate {
     
+    @IBOutlet weak var readyButton: UIButton!
     @IBOutlet weak var myMapView: MKMapView!
     var delegate:MapViewControllerDelegate?
     var placeName: String?

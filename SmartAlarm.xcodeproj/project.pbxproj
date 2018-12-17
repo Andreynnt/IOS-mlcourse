@@ -13,6 +13,7 @@
 		6D610FBD21C112240064C937 /* CoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6D610FBB21C112240064C937 /* CoreData.xcdatamodeld */; };
 		6D610FBF21C117540064C937 /* AlarmCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D610FBE21C117540064C937 /* AlarmCoreData.swift */; };
 		6D99ACB221C04AA600A91752 /* TransportType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D99ACB121C04AA600A91752 /* TransportType.swift */; };
+		6DAA809921C2EEDC0035CB56 /* PushesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAA809821C2EEDC0035CB56 /* PushesManager.swift */; };
 		CE9B639421A210CA0014F51A /* Journey.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9B639321A210CA0014F51A /* Journey.swift */; };
 		CE9B639621A2110F0014F51A /* TravelManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9B639521A2110F0014F51A /* TravelManager.swift */; };
 		CEF7BFD221C5236700694360 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEF7BFD121C5236700694360 /* CoreLocation.framework */; };
@@ -52,11 +53,12 @@
 /* Begin PBXFileReference section */
 		6D4DB4D421C00B870024A540 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		6D4DB4D621C00E4C0024A540 /* TransportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransportViewController.swift; sourceTree = "<group>"; };
-		6D4DB4DE21C013C30024A540 /* s.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = s.caf; path = "../../../IOS-mlcourse-pushes/pushes/s.caf"; sourceTree = "<group>"; };
 		6D610FB921C10FB50064C937 /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoreDataManager.swift; path = SmartAlarm/CoreDataManager/CoreDataManager.swift; sourceTree = SOURCE_ROOT; };
 		6D610FBC21C112240064C937 /* CoreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreData.xcdatamodel; sourceTree = "<group>"; };
 		6D610FBE21C117540064C937 /* AlarmCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmCoreData.swift; sourceTree = "<group>"; };
 		6D99ACB121C04AA600A91752 /* TransportType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransportType.swift; sourceTree = "<group>"; };
+		6DAA809821C2EEDC0035CB56 /* PushesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushesManager.swift; sourceTree = "<group>"; };
+		6DF29C6121C16677004018D7 /* song.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = song.caf; path = ../../../../../../../Downloads/song.caf; sourceTree = "<group>"; };
 		CE9B639321A210CA0014F51A /* Journey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Journey.swift; sourceTree = "<group>"; };
 		CE9B639521A2110F0014F51A /* TravelManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelManager.swift; sourceTree = "<group>"; };
 		CEF7BFD121C5236700694360 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -152,14 +154,6 @@
 			path = "Transport View";
 			sourceTree = "<group>";
 		};
-		6D4DB4DD21C0136B0024A540 /* Sounds */ = {
-			isa = PBXGroup;
-			children = (
-				6D4DB4DE21C013C30024A540 /* s.caf */,
-			);
-			path = Sounds;
-			sourceTree = "<group>";
-		};
 		6D4DB4DF21C013D30024A540 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -177,6 +171,22 @@
 				6D610FBE21C117540064C937 /* AlarmCoreData.swift */,
 			);
 			path = "Core Data";
+			sourceTree = "<group>";
+		};
+		6DAA809721C2EEC50035CB56 /* Pushes Manager */ = {
+			isa = PBXGroup;
+			children = (
+				6DAA809821C2EEDC0035CB56 /* PushesManager.swift */,
+			);
+			path = "Pushes Manager";
+			sourceTree = "<group>";
+		};
+		6DF29C5E21C1653A004018D7 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				6DF29C6121C16677004018D7 /* song.caf */,
+			);
+			path = Sounds;
 			sourceTree = "<group>";
 		};
 		CE9B639221A20EB90014F51A /* Travel Manager */ = {
@@ -219,12 +229,13 @@
 		EA45D46D21922F4C0050FDC3 /* SmartAlarm */ = {
 			isa = PBXGroup;
 			children = (
+				6DAA809721C2EEC50035CB56 /* Pushes Manager */,
+				6DF29C5E21C1653A004018D7 /* Sounds */,
 				EA45D47221922F4C0050FDC3 /* Main.storyboard */,
 				6D610FB821C10FA90064C937 /* Core Data */,
 				6D4DB4D921C011D30024A540 /* Alarms View */,
 				6D4DB4D821C011500024A540 /* Alarm Settings View */,
 				6D4DB4DF21C013D30024A540 /* Models */,
-				6D4DB4DD21C0136B0024A540 /* Sounds */,
 				6D4DB4DC21C012140024A540 /* Transport View */,
 				6D4DB4DB21C0120C0024A540 /* Map View */,
 				6D4DB4DA21C011FD0024A540 /* Fees View */,
@@ -390,6 +401,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE9B639421A210CA0014F51A /* Journey.swift in Sources */,
+				6DAA809921C2EEDC0035CB56 /* PushesManager.swift in Sources */,
 				EAA59AA9219B79FC0053A6F8 /* Alarm.swift in Sources */,
 				EA45D47121922F4C0050FDC3 /* AlarmsViewController.swift in Sources */,
 				6D4DB4D521C00B870024A540 /* MapViewController.swift in Sources */,

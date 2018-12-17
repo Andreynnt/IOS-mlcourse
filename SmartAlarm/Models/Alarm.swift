@@ -15,8 +15,8 @@ import UIKit
 struct Alarm {
     var arrivingPlace = "Moscow"
     var arrivingTimeHours = 12
-    var arrivingTimeMin = 10
-    var timeForFees = 10
+    var arrivingTimeMin = 0
+    var timeForFees = 0
     var getupTimeHours = 4
     var getupTimeMin = 20
     var getupPlace = "Moscow"
@@ -24,10 +24,10 @@ struct Alarm {
     
     var isOn = false
     var id = 0
-    var arrivingLatitude = 54.98934199182929
-    var arrivingLongtitude = 73.3682119846344
-    var getupLatitude = 54.98934199182929
-    var getupLongtitude = 73.3682119846344
+    var arrivingLatitude = 55.75581397971321
+    var arrivingLongtitude = 37.6176349259913
+    var getupLatitude = 55.75581397971321
+    var getupLongtitude = 37.6176349259913
 }
 
 extension Alarm {
