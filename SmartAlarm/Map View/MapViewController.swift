@@ -8,13 +8,14 @@
 
 import UIKit
 import MapKit
+import CoreLocation
 
 protocol MapViewControllerDelegate {
     func changeArrivalСoordinates(data: String, alarm: Alarm)
     func changeDispatchСoordinates(data: String, alarm: Alarm)
 }
 
-class MapViewController: UIViewController, UISearchBarDelegate {
+class MapViewController: UIViewController, UISearchBarDelegate, CLLocationManagerDelegate {
     
     @IBOutlet weak var myMapView: MKMapView!
     var delegate:MapViewControllerDelegate?
@@ -22,10 +23,96 @@ class MapViewController: UIViewController, UISearchBarDelegate {
     var isArrivalMap = false
     var alarm: Alarm?
     
+    let geocoder = CLGeocoder()
+    var adress = ""
+    
+    let manager = CLLocationManager()
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let location = locations[0]
+        
+        let span: MKCoordinateSpan = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
+        let myLocation:CLLocationCoordinate2D = CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude)
+        let region: MKCoordinateRegion = MKCoordinateRegion(center: myLocation, span: span)
+        myMapView.setRegion(region, animated: true)
+        
+        self.myMapView.showsUserLocation = true
+        manager.stopUpdatingLocation()
+    }
+    
+    @objc func action (gestureRecognizer: UIGestureRecognizer) {
+        
+        self.myMapView.removeAnnotations(myMapView.annotations)
+        let touchPoint = gestureRecognizer.location(in: myMapView)
+        let newCoords = myMapView.convert(touchPoint, toCoordinateFrom: myMapView)
+        
+        geocoderLocation(newLocation: CLLocation(latitude: newCoords.latitude, longitude: newCoords.longitude))
+        
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = newCoords
+        annotation.title = adress
+        
+        myMapView.addAnnotation(annotation)
+        
+        if self.isArrivalMap {
+            self.alarm?.arrivingLongtitude = newCoords.longitude
+            self.alarm?.arrivingLatitude = newCoords.latitude
+            
+        } else {
+            self.alarm?.getupLongtitude = newCoords.longitude
+            self.alarm?.getupLatitude = newCoords.latitude
+            
+        }
+        
+        self.placeName = annotation.title
+    }
+    
+    func geocoderLocation(newLocation: CLLocation) {
+        var dir=""
+        geocoder.reverseGeocodeLocation(newLocation){(placemarks, error) in
+            if error == nil {
+                dir = "No directory"
+            }
+            if let placemark = placemarks?.last {
+                dir = self.stringFromPlacemark(placemark: placemark)
+            }
+            self.adress = dir
+            
+        }
+    }
+    
+    func stringFromPlacemark (placemark:CLPlacemark) -> String{
+        var line = ""
+        if let p = placemark.thoroughfare {
+            line += p + ", "
+        }
+        if  let p = placemark.subThoroughfare {
+            line += p + "  "
+        }
+        if let p = placemark.locality {
+            line += "(" + p + ")"
+        }
+        return line
+    }
+    
+    @IBOutlet weak var buttonOk: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.buttonOk.layer.cornerRadius = 30
+        
+        manager.delegate = self
+        manager.desiredAccuracy = kCLLocationAccuracyBest
+        manager.requestWhenInUseAuthorization()
+        manager.startUpdatingLocation()
+        
+        let tapGesture = UILongPressGestureRecognizer(target: self, action: #selector(self.action(gestureRecognizer:)))
+        myMapView.addGestureRecognizer(tapGesture)
     }
+    
+  
+    
     
     @IBAction func searchButton(_ sender: UIBarButtonItem) {
         let searchController = UISearchController (searchResultsController: nil)
@@ -84,7 +171,7 @@ class MapViewController: UIViewController, UISearchBarDelegate {
                     self.alarm?.getupLongtitude = longitude ?? 0
                     self.alarm?.getupLatitude = latitude ?? 0
                 }
-        
+                
                 let coordinate:CLLocationCoordinate2D = CLLocationCoordinate2DMake(latitude!, longitude!)
                 let span = MKCoordinateSpan(latitudeDelta: 0.1,longitudeDelta: 0.1)
                 let region = MKCoordinateRegion(center: coordinate,span: span)
@@ -108,5 +195,18 @@ class MapViewController: UIViewController, UISearchBarDelegate {
         }
         self.navigationController?.popViewController(animated: true)
     }
-
+    
 }
+
+extension MapViewController : MKMapViewDelegate {
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        if annotation is MKUserLocation {
+            return nil
+        }
+        let pin = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "pin")
+        
+        pin.pinTintColor = UIColor.orange
+        return pin
+    }
+}
+

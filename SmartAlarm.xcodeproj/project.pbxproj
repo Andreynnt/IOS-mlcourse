@@ -15,6 +15,7 @@
 		6D99ACB221C04AA600A91752 /* TransportType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D99ACB121C04AA600A91752 /* TransportType.swift */; };
 		CE9B639421A210CA0014F51A /* Journey.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9B639321A210CA0014F51A /* Journey.swift */; };
 		CE9B639621A2110F0014F51A /* TravelManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9B639521A2110F0014F51A /* TravelManager.swift */; };
+		CEF7BFD221C5236700694360 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEF7BFD121C5236700694360 /* CoreLocation.framework */; };
 		EA156C4221A1E00F00F29C91 /* AlarmSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA156C4121A1E00F00F29C91 /* AlarmSettingsViewController.swift */; };
 		EA156C4421A1E16100F29C91 /* AlarmSettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA156C4321A1E16100F29C91 /* AlarmSettingsCell.swift */; };
 		EA156C4621A1E5B100F29C91 /* AlarmSettingsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA156C4521A1E5B100F29C91 /* AlarmSettingsCell.xib */; };
@@ -58,6 +59,7 @@
 		6D99ACB121C04AA600A91752 /* TransportType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransportType.swift; sourceTree = "<group>"; };
 		CE9B639321A210CA0014F51A /* Journey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Journey.swift; sourceTree = "<group>"; };
 		CE9B639521A2110F0014F51A /* TravelManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelManager.swift; sourceTree = "<group>"; };
+		CEF7BFD121C5236700694360 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		EA156C4121A1E00F00F29C91 /* AlarmSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmSettingsViewController.swift; sourceTree = "<group>"; };
 		EA156C4321A1E16100F29C91 /* AlarmSettingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmSettingsCell.swift; sourceTree = "<group>"; };
 		EA156C4521A1E5B100F29C91 /* AlarmSettingsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlarmSettingsCell.xib; sourceTree = "<group>"; };
@@ -85,6 +87,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEF7BFD221C5236700694360 /* CoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -184,6 +187,14 @@
 			path = "Travel Manager";
 			sourceTree = "<group>";
 		};
+		CEF7BFD021C5236700694360 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CEF7BFD121C5236700694360 /* CoreLocation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		EA45D46221922F4C0050FDC3 = {
 			isa = PBXGroup;
 			children = (
@@ -191,6 +202,7 @@
 				EA45D48221922F4E0050FDC3 /* designTests */,
 				EA45D48D21922F4E0050FDC3 /* designUITests */,
 				EA45D46C21922F4C0050FDC3 /* Products */,
+				CEF7BFD021C5236700694360 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
