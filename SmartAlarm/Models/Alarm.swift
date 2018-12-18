@@ -11,7 +11,6 @@ import Foundation
 import Foundation
 import UIKit
 
-
 struct Alarm {
     var arrivingPlace = "Moscow"
     var arrivingTimeHours = 12

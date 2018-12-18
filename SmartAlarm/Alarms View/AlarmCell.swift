@@ -7,7 +7,6 @@
 //
 import UIKit
 
-
 class AlarmCell: UITableViewCell {
     @IBOutlet weak var arrivetime: UILabel!
     @IBOutlet weak var arriveplace: UILabel!
@@ -50,7 +49,7 @@ class AlarmCell: UITableViewCell {
             alarm.setValue(true, forKey: "isOn")
             alarm.isOn = true
             let filledAlarm = alarm.makeAlarm()
-            PushesManager.shared().setPush(alarm: filledAlarm) { (alarm: Alarm) -> Void in
+            PushesManager.shared().setPush(alarm: filledAlarm) { (_: Alarm) -> Void in
                 
             }
         }

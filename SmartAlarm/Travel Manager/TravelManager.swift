@@ -9,11 +9,11 @@
 import Foundation
 
 enum TravelModes: String {
-    case driving = "driving"
-    case walking = "walking"
-    case bicycling = "bicycling"
+    case driving
+    case walking
+    case bicycling
     //общественный транспорт
-    case transit = "transit"
+    case transit
 }
 
 class TravelManager {
@@ -36,7 +36,7 @@ class TravelManager {
             return
         }
         
-        URLSession.shared.dataTask(with: parsedUrl) { (data, response, error) in
+        URLSession.shared.dataTask(with: parsedUrl) { (data, _, error) in
             if let error = error {
                 print(error.localizedDescription)
                 self.callback(-1)

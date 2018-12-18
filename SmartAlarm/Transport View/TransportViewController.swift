@@ -8,14 +8,14 @@
 
 import UIKit
 
-protocol TransportViewControllerDelegate {
+protocol TransportViewControllerDelegate: class {
     func changeTransport(transport: TransportType)
 }
 
 class TransportViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var tableView: UITableView!
     
-    var delegate: TransportViewControllerDelegate?
+    weak var delegate: TransportViewControllerDelegate?
     
     var chosenTransport = TransportType.auto
     var selectedIndexPath: IndexPath?
@@ -33,7 +33,7 @@ class TransportViewController: UIViewController, UITableViewDelegate, UITableVie
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-        self.tableView.backgroundColor = UIColor(red:0.15, green:0.15, blue:0.15, alpha:1.0)
+        self.tableView.backgroundColor = UIColor(red: 0.15, green: 0.15, blue: 0.15, alpha: 1.0)
         dictKeys = Array(transportDict.keys)
     }
     

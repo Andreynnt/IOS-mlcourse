@@ -32,7 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         UNUserNotificationCenter.current().delegate = self
         
         UNUserNotificationCenter.current().requestAuthorization(options:
-        [.alert, .badge, .sound]) { (granted, error) in
+        [.alert, .badge, .sound]) { (_, _) in
             //granted == true когда пользователь разрешил приложению отправлять пуши
         }
         
@@ -61,6 +61,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
     
-    
 }
-

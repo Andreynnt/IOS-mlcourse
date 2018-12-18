@@ -97,7 +97,7 @@ class AlarmsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     @available(iOS 11.0, *)
     func deleteAction(at indexPath: IndexPath) -> UIContextualAction {
-        let action = UIContextualAction(style: .destructive, title: "Delete") { (action, _, completion) in
+        let action = UIContextualAction(style: .destructive, title: "Delete") { (_, _, completion) in
             let coreDataObject = self.alarmsCoreData[indexPath.row]
             self.alarmsCoreData.remove(at: indexPath.row)
             self.tableView.deleteRows(at: [indexPath], with: .automatic)
@@ -111,7 +111,7 @@ class AlarmsViewController: UIViewController, UITableViewDelegate, UITableViewDa
 }
 
 extension AlarmsViewController: AlarmSettingsDelegate {
-    func addAlarm(alarmCoreData: AlarmCoreData)  {
+    func addAlarm(alarmCoreData: AlarmCoreData) {
         alarmsCoreData.append(alarmCoreData)
         lastId += 1
         DispatchQueue.main.async {

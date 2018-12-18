@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol  AlarmSettingsDelegate {
+protocol  AlarmSettingsDelegate: class {
     func addAlarm(alarmCoreData: AlarmCoreData)
     func changeAlarm(alarm: Alarm, indexPath: IndexPath)
 }
@@ -23,7 +23,7 @@ class AlarmSettingsViewController: UIViewController, UIPickerViewDataSource, UIP
     
     let settingsCellIdentifier = "secondCell"
     
-    var delegate: AlarmSettingsDelegate?
+    weak var delegate: AlarmSettingsDelegate?
     
     var alarm: Alarm?
     var indexPathInAlarmsView: IndexPath?
@@ -39,7 +39,7 @@ class AlarmSettingsViewController: UIViewController, UIPickerViewDataSource, UIP
         "Установить время на сборы",
         "Откуда поедете",
         "Куда поедете",
-        "На чем поедете",
+        "На чем поедете"
     ]
     
     @IBOutlet weak var hours: UIPickerView!
@@ -95,7 +95,7 @@ class AlarmSettingsViewController: UIViewController, UIPickerViewDataSource, UIP
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         if component == 0 {
-            return String(hoursarr[row]);
+            return String(hoursarr[row])
         } else {
             return String(minutsarr[row])
         }
@@ -104,12 +104,12 @@ class AlarmSettingsViewController: UIViewController, UIPickerViewDataSource, UIP
     func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
         if component == 0 {
             let titleData = String(hoursarr[row])
-            let myTitle = NSAttributedString(string: titleData, attributes: [NSAttributedString.Key.foregroundColor:UIColor.white])
+            let myTitle = NSAttributedString(string: titleData, attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
             return myTitle
         }
         
         let titleData = String(minutsarr[row])
-        let myTitle = NSAttributedString(string: titleData, attributes: [NSAttributedString.Key.foregroundColor:UIColor.white])
+        let myTitle = NSAttributedString(string: titleData, attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
         return myTitle
     }
     
@@ -237,4 +237,3 @@ extension AlarmSettingsViewController: TransportViewControllerDelegate {
         self.TableView.reloadRows(at: [selectedRowIndexPath!], with: .none)
     }
 }
-

@@ -54,7 +54,6 @@ class PushesManager {
                                     mode: TravelModes.transit, additionalMinutes: alarm.timeForFees)
     }
     
-    
     //перевод полученных из апи секунд + времени на сборы в нужный формат
     func getDateForPush(secondsForRoad: Int, alarm: Alarm,
                         callback: (_ alarm: Alarm) -> Void) -> DateComponents {
@@ -73,9 +72,9 @@ class PushesManager {
         getupDateComponents.second = -1 * secondsForRoad
         let resultDate = Calendar.current.date(byAdding: getupDateComponents, to: targetDate!)
         
-        let unitFlags:Set<Calendar.Component> = [
+        let unitFlags: Set<Calendar.Component> = [
             .hour, .day, .month,
-            .year,.minute,.hour,.second,
+            .year, .minute, .hour, .second,
             .calendar
         ]
         let resDateComponents = Calendar.current.dateComponents(unitFlags, from: resultDate!)
@@ -101,7 +100,7 @@ class PushesManager {
         }
     }
     
-    func getPhrasesWithPlace(place: String) -> [(String, String)]{
+    func getPhrasesWithPlace(place: String) -> [(String, String)] {
         var texts = alarmsTexts
         texts[0] =  (alarmsTexts.first!.0, alarmsTexts.first!.1 + place)
         return texts
@@ -112,9 +111,9 @@ class PushesManager {
         let calendar = Calendar.current
         let date = calendar.date(from: date)!
         let resultDate = date.addingTimeInterval(TimeInterval(additionalSeconds))
-        let unitFlags:Set<Calendar.Component> = [
+        let unitFlags: Set<Calendar.Component> = [
             .hour, .day, .month,
-            .year,.minute,.hour,.second,
+            .year, .minute, .hour, .second,
             .calendar
         ]
         let resDateComponents = Calendar.current.dateComponents(unitFlags, from: resultDate)

@@ -8,14 +8,14 @@
 
 import UIKit
 
-protocol FeesControllerDelegate {
+protocol FeesControllerDelegate: class {
     func saveTime(minutes: Int)
 }
 
 class FeesController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     
     @IBOutlet weak var FeesTime: UIPickerView!
-    var delegate: FeesControllerDelegate?
+    weak var delegate: FeesControllerDelegate?
     var timeForFees: Int = 0
     let time = Array(0...120)
     
@@ -38,7 +38,7 @@ class FeesController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     
     func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
         let titleData = String(time[row])
-        let myTitle = NSAttributedString(string: titleData, attributes: [NSAttributedString.Key.foregroundColor:UIColor.white])
+        let myTitle = NSAttributedString(string: titleData, attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
         return myTitle
     }
     

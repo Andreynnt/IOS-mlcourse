@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 enum TransportType {
     case auto
     case publicTransport

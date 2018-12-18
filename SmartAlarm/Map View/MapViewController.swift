@@ -10,7 +10,7 @@ import UIKit
 import MapKit
 import CoreLocation
 
-protocol MapViewControllerDelegate {
+protocol MapViewControllerDelegate: class {
     func changeArrivalСoordinates(data: String, alarm: Alarm)
     func changeDispatchСoordinates(data: String, alarm: Alarm)
 }
@@ -19,7 +19,7 @@ class MapViewController: UIViewController, UISearchBarDelegate, CLLocationManage
     
     @IBOutlet weak var readyButton: UIButton!
     @IBOutlet weak var myMapView: MKMapView!
-    var delegate:MapViewControllerDelegate?
+    weak var delegate: MapViewControllerDelegate?
     var placeName: String?
     var isArrivalMap = false
     var alarm: Alarm?
@@ -33,7 +33,7 @@ class MapViewController: UIViewController, UISearchBarDelegate, CLLocationManage
         let location = locations[0]
         
         let span: MKCoordinateSpan = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
-        let myLocation:CLLocationCoordinate2D = CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude)
+        let myLocation: CLLocationCoordinate2D = CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude)
         let region: MKCoordinateRegion = MKCoordinateRegion(center: myLocation, span: span)
         myMapView.setRegion(region, animated: true)
         
@@ -70,7 +70,7 @@ class MapViewController: UIViewController, UISearchBarDelegate, CLLocationManage
     
     func geocoderLocation(newLocation: CLLocation) {
         var dir=""
-        geocoder.reverseGeocodeLocation(newLocation){(placemarks, error) in
+        geocoder.reverseGeocodeLocation(newLocation) {(placemarks, error) in
             if error == nil {
                 dir = "No directory"
             }
@@ -82,7 +82,7 @@ class MapViewController: UIViewController, UISearchBarDelegate, CLLocationManage
         }
     }
     
-    func stringFromPlacemark (placemark:CLPlacemark) -> String{
+    func stringFromPlacemark (placemark: CLPlacemark) -> String {
         var line = ""
         if let p = placemark.thoroughfare {
             line += p + ", "
@@ -111,9 +111,6 @@ class MapViewController: UIViewController, UISearchBarDelegate, CLLocationManage
         let tapGesture = UILongPressGestureRecognizer(target: self, action: #selector(self.action(gestureRecognizer:)))
         myMapView.addGestureRecognizer(tapGesture)
     }
-    
-  
-    
     
     @IBAction func searchButton(_ sender: UIBarButtonItem) {
         let searchController = UISearchController (searchResultsController: nil)
@@ -144,7 +141,7 @@ class MapViewController: UIViewController, UISearchBarDelegate, CLLocationManage
         
         let activeSearch = MKLocalSearch(request: searchRequest)
         
-        activeSearch.start { (response, error) in
+        activeSearch.start { (response, _) in
             
             activityIndicator.stopAnimating()
             UIApplication.shared.endIgnoringInteractionEvents()
@@ -173,9 +170,9 @@ class MapViewController: UIViewController, UISearchBarDelegate, CLLocationManage
                     self.alarm?.getupLatitude = latitude ?? 0
                 }
                 
-                let coordinate:CLLocationCoordinate2D = CLLocationCoordinate2DMake(latitude!, longitude!)
-                let span = MKCoordinateSpan(latitudeDelta: 0.1,longitudeDelta: 0.1)
-                let region = MKCoordinateRegion(center: coordinate,span: span)
+                let coordinate: CLLocationCoordinate2D = CLLocationCoordinate2DMake(latitude!, longitude!)
+                let span = MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
+                let region = MKCoordinateRegion(center: coordinate, span: span)
                 self.myMapView.setRegion(region, animated: true)
                 self.placeName = annotation.title
             }
@@ -199,7 +196,7 @@ class MapViewController: UIViewController, UISearchBarDelegate, CLLocationManage
     
 }
 
-extension MapViewController : MKMapViewDelegate {
+extension MapViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         if annotation is MKUserLocation {
             return nil
@@ -210,4 +207,3 @@ extension MapViewController : MKMapViewDelegate {
         return pin
     }
 }
-
