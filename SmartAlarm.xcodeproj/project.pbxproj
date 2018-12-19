@@ -12,6 +12,9 @@
 		6D610FBA21C10FB50064C937 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D610FB921C10FB50064C937 /* CoreDataManager.swift */; };
 		6D610FBD21C112240064C937 /* CoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6D610FBB21C112240064C937 /* CoreData.xcdatamodeld */; };
 		6D610FBF21C117540064C937 /* AlarmCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D610FBE21C117540064C937 /* AlarmCoreData.swift */; };
+		6D90529421CA6D3000CAC9E3 /* queen_0-30.caf in Resources */ = {isa = PBXBuildFile; fileRef = 6D90529321CA6D3000CAC9E3 /* queen_0-30.caf */; };
+		6D90529621CA6DBB00CAC9E3 /* queen_30-60.caf in Resources */ = {isa = PBXBuildFile; fileRef = 6D90529521CA6DBB00CAC9E3 /* queen_30-60.caf */; };
+		6D90529821CA6DD700CAC9E3 /* queen_60-90.caf in Resources */ = {isa = PBXBuildFile; fileRef = 6D90529721CA6DD700CAC9E3 /* queen_60-90.caf */; };
 		6D99ACB221C04AA600A91752 /* TransportType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D99ACB121C04AA600A91752 /* TransportType.swift */; };
 		6DAA809921C2EEDC0035CB56 /* PushesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAA809821C2EEDC0035CB56 /* PushesManager.swift */; };
 		CE9B639421A210CA0014F51A /* Journey.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9B639321A210CA0014F51A /* Journey.swift */; };
@@ -56,9 +59,11 @@
 		6D610FB921C10FB50064C937 /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoreDataManager.swift; path = SmartAlarm/CoreDataManager/CoreDataManager.swift; sourceTree = SOURCE_ROOT; };
 		6D610FBC21C112240064C937 /* CoreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreData.xcdatamodel; sourceTree = "<group>"; };
 		6D610FBE21C117540064C937 /* AlarmCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmCoreData.swift; sourceTree = "<group>"; };
+		6D90529321CA6D3000CAC9E3 /* queen_0-30.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "queen_0-30.caf"; sourceTree = "<group>"; };
+		6D90529521CA6DBB00CAC9E3 /* queen_30-60.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "queen_30-60.caf"; sourceTree = "<group>"; };
+		6D90529721CA6DD700CAC9E3 /* queen_60-90.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "queen_60-90.caf"; sourceTree = "<group>"; };
 		6D99ACB121C04AA600A91752 /* TransportType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransportType.swift; sourceTree = "<group>"; };
 		6DAA809821C2EEDC0035CB56 /* PushesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushesManager.swift; sourceTree = "<group>"; };
-		6DF29C6121C16677004018D7 /* song.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = song.caf; path = ../../../../../../../Downloads/song.caf; sourceTree = "<group>"; };
 		CE9B639321A210CA0014F51A /* Journey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Journey.swift; sourceTree = "<group>"; };
 		CE9B639521A2110F0014F51A /* TravelManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelManager.swift; sourceTree = "<group>"; };
 		CEF7BFD121C5236700694360 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -184,7 +189,9 @@
 		6DF29C5E21C1653A004018D7 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
-				6DF29C6121C16677004018D7 /* song.caf */,
+				6D90529721CA6DD700CAC9E3 /* queen_60-90.caf */,
+				6D90529521CA6DBB00CAC9E3 /* queen_30-60.caf */,
+				6D90529321CA6D3000CAC9E3 /* queen_0-30.caf */,
 			);
 			path = Sounds;
 			sourceTree = "<group>";
@@ -371,9 +378,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6D90529821CA6DD700CAC9E3 /* queen_60-90.caf in Resources */,
 				EA156C4621A1E5B100F29C91 /* AlarmSettingsCell.xib in Resources */,
+				6D90529421CA6D3000CAC9E3 /* queen_0-30.caf in Resources */,
 				EA45D47921922F4E0050FDC3 /* LaunchScreen.storyboard in Resources */,
 				EA45D49D219238270050FDC3 /* AlarmCell.xib in Resources */,
+				6D90529621CA6DBB00CAC9E3 /* queen_30-60.caf in Resources */,
 				EA45D47621922F4E0050FDC3 /* Assets.xcassets in Resources */,
 				EA45D47421922F4C0050FDC3 /* Main.storyboard in Resources */,
 			);

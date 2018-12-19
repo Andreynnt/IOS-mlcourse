@@ -23,13 +23,12 @@ class PushesManager {
         
     }
     
-    let songName = "song.caf"
     let defaultAlarmIdentifier = "alarm_"
     
     let alarmsTexts = [
-        ("Wake up, sir", "You need to go to "),
-        ("Ohhh, what a lazy bone", "Wake up, pleaseee"),
-        ("UPPPP NOW", "🤬🤬🤬")
+        ("Wake up, sir", "You need to go to ", "queen_0-30.caf"),
+        ("Ohhh, what a lazy bone", "Wake up, pleaseee", "queen_30-60.caf"),
+        ("UPPPP NOW", "🤬🤬🤬", "queen_60-90.caf")
     ]
     
     func setPush(alarm: Alarm, changeAlarmsViewCallback: @escaping (_ alarm: Alarm) -> Void) {
@@ -95,19 +94,20 @@ class PushesManager {
             let idetifier = "\(defaultAlarmIdentifier)\(String(alarmId))_\(repeatNum)"
             let titleText = phrases[repeatNum].0
             let bodyText = phrases[repeatNum].1
+            let songName = phrases[repeatNum].2
             addNewPush(at: parsedDate, additionalSeconds: repeatNum * 30, identifier: idetifier,
-                       titleText: titleText, bodyText: bodyText)
+                       titleText: titleText, bodyText: bodyText, song: songName)
         }
     }
     
-    func getPhrasesWithPlace(place: String) -> [(String, String)] {
+    func getPhrasesWithPlace(place: String) -> [(String, String, String)] {
         var texts = alarmsTexts
-        texts[0] =  (alarmsTexts.first!.0, alarmsTexts.first!.1 + place)
+        texts[0] =  (alarmsTexts.first!.0, alarmsTexts.first!.1 + place, alarmsTexts.first!.2)
         return texts
     }
     
     func addNewPush(at date: DateComponents, additionalSeconds: Int, identifier: String,
-                    titleText: String, bodyText: String) {
+                    titleText: String, bodyText: String, song: String) {
         let calendar = Calendar.current
         let date = calendar.date(from: date)!
         let resultDate = date.addingTimeInterval(TimeInterval(additionalSeconds))
@@ -121,7 +121,7 @@ class PushesManager {
         let content = UNMutableNotificationContent()
         content.title = titleText
         content.body = bodyText
-        content.sound = UNNotificationSound.init(named: UNNotificationSoundName(rawValue: songName))
+        content.sound = UNNotificationSound.init(named: UNNotificationSoundName(rawValue: song))
         
         let trigger = UNCalendarNotificationTrigger(dateMatching: resDateComponents, repeats: true)
         

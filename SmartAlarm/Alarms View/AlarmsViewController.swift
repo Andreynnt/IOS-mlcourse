@@ -27,7 +27,7 @@ class AlarmsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        tableView.tableFooterView = UIView()
         do {
             try self.fetchedResultsController.performFetch()
             alarmsCoreData = self.fetchedResultsController.fetchedObjects as! [AlarmCoreData]
@@ -50,6 +50,7 @@ class AlarmsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         selectedAlarm = selectedAlarmCoreData?.makeAlarm()
         selectedIndexPath = indexPath
         performSegue(withIdentifier: "toSecond", sender: self)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     @IBAction func createNewAlarm(_ sender: UIBarButtonItem) {
@@ -79,7 +80,7 @@ class AlarmsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 90
+        return 80
     }
     
     override func viewWillAppear(_ animated: Bool) {
