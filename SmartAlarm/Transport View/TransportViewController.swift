@@ -31,9 +31,10 @@ class TransportViewController: UIViewController, UITableViewDelegate, UITableVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.tableFooterView = UIView()
         tableView.delegate = self
         tableView.dataSource = self
-        self.tableView.backgroundColor = UIColor(red: 0.15, green: 0.15, blue: 0.15, alpha: 1.0)
+        //self.tableView.backgroundColor = UIColor(red: 0.15, green: 0.15, blue: 0.15, alpha: 1.0)
         dictKeys = Array(transportDict.keys)
     }
     
@@ -42,20 +43,22 @@ class TransportViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 80
+        return 45
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MyCell", for: indexPath)
         let value = dictKeys![indexPath.row]
         cell.textLabel?.text = value
-        cell.textLabel?.textColor = UIColor.orange
+        cell.textLabel?.textColor = UIColor.white
+        cell.textLabel?.font.withSize(15)
         cell.selectionStyle = .none
         
         if transportDict[value]! == chosenTransport {
             cell.accessoryType = .checkmark
             selectedIndexPath = indexPath
         }
+        cell.tintColor = UIColor.orange
         return cell
     }
     

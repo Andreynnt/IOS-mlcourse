@@ -36,7 +36,7 @@ class AlarmSettingsViewController: UIViewController, UIPickerViewDataSource, UIP
     var openArrivalMap: Bool?
     
     let listForSecond = [
-        "Установить время на сборы",
+        "Время на сборы",
         "Откуда поедете",
         "Куда поедете",
         "На чем поедете"
@@ -148,20 +148,24 @@ class AlarmSettingsViewController: UIViewController, UIPickerViewDataSource, UIP
         self.selectedRowIndexPath = indexPath
         if indexPath.row == 0 {
             performSegue(withIdentifier: "toFees", sender: self)
+            tableView.deselectRow(at: indexPath, animated: true)
             return
         }
         if indexPath.row == 1 {
             openArrivalMap = false
             performSegue(withIdentifier: "toMapView", sender: self)
+            tableView.deselectRow(at: indexPath, animated: true)
             return
         }
         if indexPath.row == 2 {
             openArrivalMap = true
             performSegue(withIdentifier: "toMapView", sender: self)
+            tableView.deselectRow(at: indexPath, animated: true)
             return
         }
         if indexPath.row == 3 {
             performSegue(withIdentifier: "toSelectTransportView", sender: self)
+            tableView.deselectRow(at: indexPath, animated: true)
             return
         }
     }
