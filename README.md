@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/Andreynnt/IOS-mlcourse.svg?branch=master)](https://travis-ci.org/Andreynnt/IOS-mlcourse)
+[![Build Status](https://travis-ci.org/Andreynnt/IOS-mlcourse.svg?branch=mvp)](https://travis-ci.org/Andreynnt/IOS-mlcourse)
 # Smart Alarm ⏰
  ```IOS-application from technopark mail.ru course```
 
