@@ -6,7 +6,7 @@
 - set the time to get ready
 - select type of transport (by car, on foot, using public transport, by bike)
 
-### And the alarm will wake you up at the right time.🔥🔥🔥
+### And the alarm will wake you up at the right time🔥🔥🔥
 
 <h1> Our team: </h1>
 <ul>
