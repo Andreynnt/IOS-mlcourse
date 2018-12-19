@@ -229,9 +229,9 @@
 		EA45D46D21922F4C0050FDC3 /* SmartAlarm */ = {
 			isa = PBXGroup;
 			children = (
+				EA45D47221922F4C0050FDC3 /* Main.storyboard */,
 				6DAA809721C2EEC50035CB56 /* Pushes Manager */,
 				6DF29C5E21C1653A004018D7 /* Sounds */,
-				EA45D47221922F4C0050FDC3 /* Main.storyboard */,
 				6D610FB821C10FA90064C937 /* Core Data */,
 				6D4DB4D921C011D30024A540 /* Alarms View */,
 				6D4DB4D821C011500024A540 /* Alarm Settings View */,
